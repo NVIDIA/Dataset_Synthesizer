@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 3,
+	"VersionName": "0.1",
+	"FriendlyName": "NVIDIA Data Object",
+	"Description": "Parametric Dataset Exporter",
+	"Category": "NVIDIA",
+	"CreatedBy": "NVIDIA",
+	"CreatedByURL": "http://developer.nvidia.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NVDataObject",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "NVDataObjectEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		},
+	]
+}

@@ -1,0 +1,29 @@
+{
+    "FileVersion" : 3,
+    "Version" : 1,
+    "FriendlyName" : "Fast Scene Capturer",
+    "VersionName" : "0.1",
+    "CreatedBy" : "Thang To, NVStudios, Nvidia Corp.",
+    "Description" : "Fast Scene capturer",
+   	"Category": "NVIDIA",
+    "EnabledByDefault" : true,
+    "CanContainContent": true,
+    "Modules" :
+    [
+        {
+            "Name" : "NVSceneCapturer",
+            "Type" : "Runtime",
+            "LoadingPhase": "PostConfigInit"
+        },
+        {
+            "Name" : "NVSceneCapturerGame",
+            "Type" : "Runtime",
+            "LoadingPhase": "PostConfigInit"
+        },
+        {
+            "Name" : "NVSceneCapturerEditor",
+			"Type": "Editor",
+            "LoadingPhase": "PostEngineInit"
+        }
+    ]
+}

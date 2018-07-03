@@ -1,0 +1,11 @@
+Intermediate/
+Build/
+Saved/
+DerivedDataCache/
+Binaries/
+.vs/
+*.sln
+*.csproj
+*.vcxproj
+*.db
+*.opendb

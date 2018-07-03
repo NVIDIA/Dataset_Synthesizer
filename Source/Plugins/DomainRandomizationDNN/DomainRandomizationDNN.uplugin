@@ -1,0 +1,29 @@
+{
+    "FileVersion" : 3,
+    "Version" : 1,
+    "FriendlyName" : "Domain Randomization for Deep Neural Networks",
+    "VersionName" : "0.1",
+    "CreatedBy" : "Thang To, NVStudios, Nvidia Corp.",
+    "Description" : "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World",
+   	"Category": "NVIDIA",
+    "EnabledByDefault" : true,
+    "CanContainContent": true,
+    "Modules" :
+    [
+        {
+            "Name" : "DomainRandomizationDNN",
+            "Type" : "Runtime",
+            "LoadingPhase": "PostConfigInit"
+        }
+    ],
+	"Plugins": [
+		{
+			"Name": "NVDataObject",
+			"Enabled": true
+		},
+		{
+			"Name": "NVSceneCapturer",
+			"Enabled": true
+		}
+	]
+}

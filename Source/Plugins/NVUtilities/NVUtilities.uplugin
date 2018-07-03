@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 3,
+	"VersionName": "0.1",
+	"FriendlyName": "NVIDIA Utilities",
+	"Description": "Collection of helper classes and assets to make working with UE4 easier",
+	"Category": "NVIDIA",
+	"CreatedBy": "NVIDIA",
+	"CreatedByURL": "http://developer.nvidia.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NVUtilities",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}
