@@ -5,6 +5,11 @@ Overview
 ![](./NDDSIntro.png)
 _Example of an image generated using NDDS, along with ground truth segmentation, depth, and object poses._
 
+Downloading
+-----------
+This repository uses gitLFS:
+
+> **First, install git LFS (large file storage):** https://git-lfs.github.com/ 
 For further details, please see https://github.com/NVIDIA/Dataset_Synthesizer/Documentation/NDDS.pdf
 
 

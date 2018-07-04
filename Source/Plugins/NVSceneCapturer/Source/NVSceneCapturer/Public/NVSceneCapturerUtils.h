@@ -1,7 +1,7 @@
 /*
-* Copyright (c) 2018 NVIDIA Corporation.  All rights reserved.        
-* This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-* International License.  (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
+* Copyright (c) 2018 NVIDIA Corporation. All rights reserved.
+* This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+* International License.  (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 */
 
 #pragma once
@@ -24,7 +24,7 @@ UENUM(BlueprintType)
 enum class ENVImageFormat : uint8
 {
     /// Portable Network Graphics.
-    PNG               UMETA(DisplayName = "PND (Portable Network Graphics)."),
+    PNG               UMETA(DisplayName = "PNG (Portable Network Graphics)."),
 
     /// Joint Photographic Experts Group.
     JPEG              UMETA(DisplayName = "JPEG (Joint Photographic Experts Group)."),
@@ -467,7 +467,7 @@ public:
 #endif //WITH_EDITORONLY_DATA
 
 public: // Editor properties
-    UPROPERTY(EditAnywhere, Category = CapturerSettings)
+    UPROPERTY(VisibleAnywhere, Category = CapturerSettings)
     ENVImageFormat ExportImageFormat;
 
     UPROPERTY(Transient, VisibleAnywhere, Category = CapturerSettings, meta = (EditCondition = "!bUseExplicitCameraIntrinsic"))
