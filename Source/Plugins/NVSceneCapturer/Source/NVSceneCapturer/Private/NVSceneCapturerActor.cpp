@@ -1,5 +1,5 @@
 /*
-* Copyright © 2018 NVIDIA Corporation.  All rights reserved.        
+* Copyright (c) 2018 NVIDIA Corporation.  All rights reserved.        
 * This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
 * International License.  (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 */
@@ -416,18 +416,24 @@ void ANVSceneCapturerActor::StartCapturing()
 
 void ANVSceneCapturerActor::StartCapturing_Internal()
 {
-    if (bIsActive)
+    if (!bIsActive)
     {
-        UpdateCapturerSettings();
-
-        OnStartedEvent.Broadcast(this);
-        // To start capture SceneDataHandler is requirement.
+        // bIsActive is public. we need to copy bIsActive state into the protected value.
+        CurrentState = ENVSceneCapturerState::NotActive;
+    }
+    else
+    {
+        // To start capture, SceneDataHandler is requirement.
         if (!SceneDataHandler)
         {
             UE_LOG(LogNVSceneCapturer, Error, TEXT("SceneCapturer SceneDataHandler is empty. Please select data handler in details panel."));
         }
         else
         {
+            // Now we can start capture.
+            UpdateCapturerSettings();
+
+            OnStartedEvent.Broadcast(this);
             SceneDataHandler->OnStartCapturingSceneData();
 
             GetWorldTimerManager().ClearTimer(TimeHandle_StartCapturingDelay);
@@ -435,6 +441,7 @@ void ANVSceneCapturerActor::StartCapturing_Internal()
 
             // Reset the counter and stats
             ResetCounter();
+            // bIsActive is public. we need to copy bIsActive state into the protected value.
             CurrentState = ENVSceneCapturerState::Running;
             // NOTE: Make it wait till the next frame to start exporting since the scene capturer only just start capturing now
             StartCapturingTimestamp = GetWorld()->GetRealTimeSeconds();
@@ -446,10 +453,6 @@ void ANVSceneCapturerActor::StartCapturing_Internal()
                 ViewpointComp->StartCapturing();
             }
         }
-    }
-    else
-    {
-        CurrentState = ENVSceneCapturerState::NotActive;
     }
 }
 
