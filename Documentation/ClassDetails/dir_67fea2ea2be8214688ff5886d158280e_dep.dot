@@ -1,0 +1,13 @@
+digraph "NVDataObject" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_7f5478c7abf878db3974d8ea3e24e9d7 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Plugins" fontname="Helvetica", fontsize="10", URL="dir_7f5478c7abf878db3974d8ea3e24e9d7.html"]
+  subgraph clusterdir_67fea2ea2be8214688ff5886d158280e {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_67fea2ea2be8214688ff5886d158280e.html"];
+    dir_67fea2ea2be8214688ff5886d158280e [shape=plaintext label="NVDataObject"];
+    dir_a7335223e37b32d6629ff1183c50e1e2 [shape=box label="Source" color="red" fillcolor="white" style="filled" URL="dir_a7335223e37b32d6629ff1183c50e1e2.html"];
+  }
+  }
+}

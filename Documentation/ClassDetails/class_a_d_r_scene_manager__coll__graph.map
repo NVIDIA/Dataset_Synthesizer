@@ -1,0 +1,10 @@
+<map id="ADRSceneManager" name="ADRSceneManager">
+<area shape="rect" id="node2" href="$class_a_n_v_scene_manager.html" title="ANVSceneManager" alt="" coords="1285,90,1421,117"/>
+<area shape="rect" id="node10" href="$class_a_group_actor_manager.html" title="AGroupActorManager" alt="" coords="1280,154,1427,181"/>
+<area shape="rect" id="node4" href="$struct_f_n_v_object_segmentation___class.html" title="FNVObjectSegmentation\l_Class" alt="" coords="893,71,1060,112"/>
+<area shape="rect" id="node5" href="$class_u_n_v_object_mask_mananger___stencil.html" title="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..." alt="" coords="515,71,691,112"/>
+<area shape="rect" id="node6" href="$class_u_n_v_object_mask_mananger.html" title="Mask base class: scan actors in the scene, assign them an ID based on mask type. " alt="" coords="124,78,300,105"/>
+<area shape="rect" id="node9" href="$class_u_n_v_object_mask_mananger___vertex_color.html" title="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..." alt="" coords="515,5,691,47"/>
+<area shape="rect" id="node11" href="$class_u_spatial_layout_generator.html" title="USpatialLayoutGenerator" alt="" coords="324,173,491,199"/>
+<area shape="rect" id="node8" href="$struct_f_n_v_object_segmentation___instance.html" title="FNVObjectSegmentation\l_Instance" alt="" coords="893,5,1060,47"/>
+</map>

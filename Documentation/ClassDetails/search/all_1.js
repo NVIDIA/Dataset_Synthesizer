@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['bautoexitafterexportingcomplete',['bAutoExitAfterExportingComplete',['../class_a_n_v_scene_manager.html#a91169b5473d253d12c646b20a6c1df11',1,'ANVSceneManager']]],
+  ['bautoopenexporteddirectory',['bAutoOpenExportedDirectory',['../class_u_n_v_scene_data_exporter.html#ac762f51844be0e128580362ba2c397d2',1,'UNVSceneDataExporter']]],
+  ['bautostartcapturing',['bAutoStartCapturing',['../class_a_n_v_scene_capturer_actor.html#afbee368d4a8144af31810ceabc2db208',1,'ANVSceneCapturerActor']]],
+  ['bdebug',['bDebug',['../class_u_n_v_object_mask_mananger.html#ac77ee86e27f33bd1c1b81767ea05837a',1,'UNVObjectMaskMananger']]],
+  ['bexportimagecoordinateinpixel',['bExportImageCoordinateInPixel',['../struct_f_n_v_data_export_settings.html#af242af017e0ba99d5ffdcaff2d5105c7',1,'FNVDataExportSettings']]],
+  ['bignorehiddenactor',['bIgnoreHiddenActor',['../struct_f_n_v_scene_exporter_config.html#a2f2e3833dec959e4cf95b1cb9a8e9dd8',1,'FNVSceneExporterConfig::bIgnoreHiddenActor()'],['../struct_f_n_v_data_export_settings.html#a8f9d79ff7745824f3f152f0e95f9f8e4',1,'FNVDataExportSettings::bIgnoreHiddenActor()']]],
+  ['bignorereadbackalpha',['bIgnoreReadbackAlpha',['../class_u_n_v_scene_capture_component2_d.html#a08aa960d8190e2cddd33cf812c97b04d',1,'UNVSceneCaptureComponent2D']]],
+  ['bisactive',['bIsActive',['../class_a_n_v_scene_capturer_actor.html#ac1ed4be145ea02c1908f6ee96a6cce07',1,'ANVSceneCapturerActor::bIsActive()'],['../class_a_n_v_scene_manager.html#a7814d210442ca9fd32ac090e3d247a22',1,'ANVSceneManager::bIsActive()'],['../struct_f_n_v_scene_marker_component.html#ae5a95c28471bb81fa390c17c329a703e',1,'FNVSceneMarkerComponent::bIsActive()']]],
+  ['bisenabled',['bIsEnabled',['../struct_f_n_v_scene_capturer_viewpoint_settings.html#a6394af17c82fb74ffcab3db7d0302326',1,'FNVSceneCapturerViewpointSettings::bIsEnabled()'],['../class_u_n_v_scene_feature_extractor.html#a9c320223090611aba5e3cbedb7800478',1,'UNVSceneFeatureExtractor::bIsEnabled()']]],
+  ['bonlyshowtrainingactors',['bOnlyShowTrainingActors',['../class_u_n_v_scene_feature_extractor___pixel_data.html#a52a15fb7558d1fb7d472d0e5a718b8ad',1,'UNVSceneFeatureExtractor_PixelData']]],
+  ['boundingbox2dtype',['BoundingBox2dType',['../struct_f_n_v_scene_exporter_config.html#a9a26202649655bebcafcd01d187dc479',1,'FNVSceneExporterConfig::BoundingBox2dType()'],['../struct_f_n_v_data_export_settings.html#a8e80b088fce5e3d6b647cbbe6d1630f1',1,'FNVDataExportSettings::BoundingBox2dType()']]],
+  ['boundstype',['BoundsType',['../struct_f_n_v_scene_exporter_config.html#af3dc8d855de6ed1dd6cd3200486c5a68',1,'FNVSceneExporterConfig::BoundsType()'],['../struct_f_n_v_data_export_settings.html#a8005fbefcd7f5ac7a6831733e6ecd7f7',1,'FNVDataExportSettings::BoundsType()']]],
+  ['boverridecapturesettings',['bOverrideCaptureSettings',['../struct_f_n_v_scene_capturer_viewpoint_settings.html#a64866eaebf8db2f27c178cc7675caa08',1,'FNVSceneCapturerViewpointSettings']]],
+  ['boverrideexportimagetype',['bOverrideExportImageType',['../class_u_n_v_scene_feature_extractor___pixel_data.html#a06215d3f5e19b31dd532e63b2e996926',1,'UNVSceneFeatureExtractor_PixelData']]],
+  ['boverridefeatureextractorsettings',['bOverrideFeatureExtractorSettings',['../struct_f_n_v_scene_capturer_viewpoint_settings.html#aa952c75a4c3090127481d1e86f8c0eef',1,'FNVSceneCapturerViewpointSettings']]],
+  ['bpausegamelogicwhenflushing',['bPauseGameLogicWhenFlushing',['../class_a_n_v_scene_capturer_actor.html#a20fbcfd431019e78eb152a2249ed6128',1,'ANVSceneCapturerActor']]],
+  ['btakeovergameviewport',['bTakeOverGameViewport',['../class_a_n_v_scene_capturer_actor.html#abffd8b287c0434711da9f56be840912b',1,'ANVSceneCapturerActor']]],
+  ['buildprojectionmatrix',['BuildProjectionMatrix',['../class_u_n_v_scene_capture_component2_d.html#a84205753d70d15404a04341499c2d2b1',1,'UNVSceneCaptureComponent2D']]],
+  ['buildviewprojectionmatrix',['BuildViewProjectionMatrix',['../class_u_n_v_scene_capture_component2_d.html#aa3cab060077bb218d7deb8235ac24896',1,'UNVSceneCaptureComponent2D::BuildViewProjectionMatrix(const FTransform &amp;ViewTransform, const FNVImageSize &amp;RenderTargetSize, ECameraProjectionMode::Type ProjectionType, float FOVAngle, float OrthoWidth, FMatrix &amp;ProjectionMatrix)'],['../class_u_n_v_scene_capture_component2_d.html#a4d6652435bbcf4e395389bc20563e114',1,'UNVSceneCaptureComponent2D::BuildViewProjectionMatrix(const FTransform &amp;ViewTransform, const FMatrix &amp;ProjectionMatrix)']]],
+  ['busemapnameforcaptureddirectory',['bUseMapNameForCapturedDirectory',['../class_u_n_v_scene_data_exporter.html#a85fc7ddac9fd863edf50465a535a1e9e',1,'UNVSceneDataExporter']]]
+];

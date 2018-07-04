@@ -1,0 +1,14 @@
+digraph "UNVSceneCapturerHUD_ExporterControlPanel"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{UNVSceneCapturerHUD\l_ExporterControlPanel\n|# ActiveCapturerActor\l# CurrentActiveStatePanel\l# StatePanelList\l# TitleText\l|+ UNVSceneCapturerHUD\l_ExporterControlPanel()\l+ GetActiveExporterActor()\l+ GetOutputDirectory()\l+ SynchronizeProperties()\l+ Update()\l# GetPanelOfState()\l# OnCompleted_Clicked()\l# OnOpenOutputDirectory\l_Clicked()\l# OnPauseExporting_Clicked()\l# OnResumeExporting_Clicked()\l# OnStartExporting_Clicked()\l# OnStopExporting_Clicked()\l# OnToggleExporterViewport\l_Clicked()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{UUserWidget\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #SceneDataExporter" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{UNVSceneDataExporter\n|+ bUseMapNameForCapturedDirectory\l+ CustomDirectoryName\l# bAutoOpenExportedDirectory\l# DirectoryConflictHandleType\l# FullOutputDirectoryPath\l# ImageExporterThread\l# ImageWrapperModule\l# MaxSaveImageAsyncCount\l# RootCapturedDirectoryPath\l# SubFolderName\l# DefaultDataOutputFolder\l|+ UNVSceneDataExporter()\l+ CanHandleMoreData()\l+ GetConfiguredOutputDirectoryName()\l+ GetConfiguredOutputDirectoryPath()\l+ GetExportFilePath()\l+ GetExportFolderName()\l+ GetFullOutputDirectoryPath()\l+ GetRootCaptureDirectoryPath()\l+ GetSubFolderName()\l+ HandleSceneAnnotationData()\land 6 more...\l# ExportCapturerSettings()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_data_exporter.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{UNVSceneDataHandler\n|+ CanHandleMoreData\l+ HandleSceneAnnotationData\l+ HandleScenePixelsData\l+ IsHandlingData\l|+ UNVSceneDataHandler()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_data_handler.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{UObject\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

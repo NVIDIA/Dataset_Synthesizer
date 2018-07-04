@@ -1,0 +1,13 @@
+digraph "DomainRandomizationDNN" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_7f5478c7abf878db3974d8ea3e24e9d7 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Plugins" fontname="Helvetica", fontsize="10", URL="dir_7f5478c7abf878db3974d8ea3e24e9d7.html"]
+  subgraph clusterdir_d93c1c5ac47269f6bec00f9be8e4d172 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d93c1c5ac47269f6bec00f9be8e4d172.html"];
+    dir_d93c1c5ac47269f6bec00f9be8e4d172 [shape=plaintext label="DomainRandomizationDNN"];
+    dir_d09c8784fcb3c8d3e90dc372af34d7f0 [shape=box label="Source" color="red" fillcolor="white" style="filled" URL="dir_d09c8784fcb3c8d3e90dc372af34d7f0.html"];
+  }
+  }
+}

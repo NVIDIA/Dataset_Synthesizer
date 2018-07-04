@@ -1,0 +1,11 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="UInterface",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="UNVDataObjectOwner",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_data_object_owner.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="UNVSceneMarkerInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_marker_interface.html",tooltip="Base interface for object that can be placed in the map as marker for other actors. "];
+}

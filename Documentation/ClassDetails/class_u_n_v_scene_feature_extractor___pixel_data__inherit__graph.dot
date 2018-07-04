@@ -1,0 +1,19 @@
+digraph "UNVSceneFeatureExtractor_PixelData"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="UNVSceneFeatureExtractor\l_PixelData",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="UNVSceneFeatureExtractor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_feature_extractor.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="UObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="UNVSceneFeatureExtractor\l_SceneDepth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_feature_extractor___scene_depth.html",tooltip="Base class for all the feature extractors that export the scene&#39;s depth buffer. "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="UNVSceneFeatureExtractor\l_ScenePixelVelocity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_feature_extractor___scene_pixel_velocity.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="UNVSceneFeatureExtractor\l_StencilMask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_feature_extractor___stencil_mask.html",tooltip="Base class for all the feature extractors that export the scene&#39;s stencil mask buffer. "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="UNVSceneFeatureExtractor\l_VertexColorMask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_feature_extractor___vertex_color_mask.html",tooltip="Base class for all the feature extractors that export the scene&#39;s vertex color buffer. "];
+}

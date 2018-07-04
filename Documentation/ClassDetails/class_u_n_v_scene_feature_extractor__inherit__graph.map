@@ -1,0 +1,8 @@
+<map id="UNVSceneFeatureExtractor" name="UNVSceneFeatureExtractor">
+<area shape="rect" id="node3" href="$class_u_n_v_scene_feature_extractor___annotation_data.html" title="UNVSceneFeatureExtractor\l_AnnotationData" alt="" coords="353,39,536,80"/>
+<area shape="rect" id="node4" href="$class_u_n_v_scene_feature_extractor___pixel_data.html" title="Base class for all the feature extractors that capture the scene view in pixel data format..." alt="" coords="353,104,536,145"/>
+<area shape="rect" id="node5" href="$class_u_n_v_scene_feature_extractor___scene_depth.html" title="Base class for all the feature extractors that export the scene&#39;s depth buffer. " alt="" coords="584,5,767,47"/>
+<area shape="rect" id="node6" href="$class_u_n_v_scene_feature_extractor___scene_pixel_velocity.html" title="UNVSceneFeatureExtractor\l_ScenePixelVelocity" alt="" coords="584,71,767,112"/>
+<area shape="rect" id="node7" href="$class_u_n_v_scene_feature_extractor___stencil_mask.html" title="Base class for all the feature extractors that export the scene&#39;s stencil mask buffer. " alt="" coords="584,136,767,177"/>
+<area shape="rect" id="node8" href="$class_u_n_v_scene_feature_extractor___vertex_color_mask.html" title="Base class for all the feature extractors that export the scene&#39;s vertex color buffer. " alt="" coords="584,201,767,243"/>
+</map>

@@ -1,0 +1,13 @@
+digraph "Source" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_3fb71977f0ce0b3f9ecaddf6dabfde31 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="UEModules" fontname="Helvetica", fontsize="10", URL="dir_3fb71977f0ce0b3f9ecaddf6dabfde31.html"]
+  subgraph clusterdir_2001d01347d0753b095895293059ff36 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_2001d01347d0753b095895293059ff36.html"];
+    dir_2001d01347d0753b095895293059ff36 [shape=plaintext label="Source"];
+    dir_f5957767578ac4d090d22695e74cd29f [shape=box label="NVSceneCapturerDev" color="black" fillcolor="white" style="filled" URL="dir_f5957767578ac4d090d22695e74cd29f.html"];
+  }
+  }
+}

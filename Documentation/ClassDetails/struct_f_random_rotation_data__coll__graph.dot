@@ -1,0 +1,6 @@
+digraph "FRandomRotationData"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{FRandomRotationData\n|# bRandomizePitch\l# bRandomizeRoll\l# bRandomizeRotationInACone\l# bRandomizeYaw\l# PitchRange\l# RandomConeHalfAngle\l# RollRange\l# YawRange\l|+ FRandomRotationData()\l+ GetRandomRotation()\l+ GetRandomRotationRelative()\l+ ShouldRandomized()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

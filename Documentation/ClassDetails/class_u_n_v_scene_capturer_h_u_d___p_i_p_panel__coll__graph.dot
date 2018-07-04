@@ -1,0 +1,14 @@
+digraph "UNVSceneCapturerHUD_PIPPanel"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{UNVSceneCapturerHUD\l_PIPPanel\n|# ActiveCapturerActor\l# bUseRenderTargetForVisualization\l# VisualizerMaterial\l# VizMaterialDynamic\l|+ UNVSceneCapturerHUD\l_PIPPanel()\l+ SynchronizeProperties()\l+ Update()\l# OnChannelSelected()\l# UpdateChannels()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{UUserWidget\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #SceneDataVisualizer" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{UNVSceneDataVisualizer\n|# VizTextureMap\l|+ UNVSceneDataVisualizer()\l+ CanHandleMoreData()\l+ GetTexture()\l+ GetVizNameList()\l+ HandleSceneAnnotationData()\l+ HandleScenePixelsData()\l+ Init()\l+ IsHandlingData()\l+ OnCapturingCompleted()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_data_visualizer.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{UNVSceneDataHandler\n|+ CanHandleMoreData\l+ HandleSceneAnnotationData\l+ HandleScenePixelsData\l+ IsHandlingData\l|+ UNVSceneDataHandler()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_data_handler.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{UObject\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

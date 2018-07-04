@@ -1,0 +1,17 @@
+digraph "UNVMovementComponent_Waypoint"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{UNVMovementComponent\l_Waypoint\n|# bShouldTeleport\l# CloseEnoughDistance\l# CurrentWaypointIndex\l# NavigationType\l# WaitingCountdown\l# WaypointStopDuration\l|+ UNVMovementComponent\l_Waypoint()\l# BeginPlay()\l# GetDistanceToDestination()\l# OnWaypointReached()\l# UpdateLocation()\l# UpdateMoveDirection()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{UNVMovementComponentBase\n|# bFaceMovingDirection\l# CurrentSpeed\l# MoveDirection\l# RotationSpeed\l# SpeedAcceleration\l# SpeedRange\l# TargetSpeed\l|+ UNVMovementComponentBase()\l# BeginPlay()\l# GetTravelDistanceInDuration()\l# TickComponent()\l# UpdateLocation()\l# UpdateRotation()\l# UpdateSpeed()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_movement_component_base.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{UActorComponent\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #CurrentDestinationWaypoint" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{ANVWaypoint\n||+ ANVWaypoint()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_n_v_waypoint.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{AActor\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #PathToFollow" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node6 [label="{ANVNavigationPath\n|+ bClosedPath\l+ WaypointList\l|+ ANVNavigationPath()\l+ GetRandomWaypoint()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_n_v_navigation_path.html"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+}

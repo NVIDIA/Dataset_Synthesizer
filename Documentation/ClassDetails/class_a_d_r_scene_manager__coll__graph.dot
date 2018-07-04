@@ -1,0 +1,30 @@
+digraph "ADRSceneManager"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ADRSceneManager",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ANVSceneManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_n_v_scene_manager.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AActor",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ObjectClassSegmentation" ,fontname="Helvetica"];
+  Node4 [label="FNVObjectSegmentation\l_Class",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_f_n_v_object_segmentation___class.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" StencilMaskManager" ,fontname="Helvetica"];
+  Node5 [label="UNVObjectMaskMananger\l_Stencil",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger___stencil.html",tooltip="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..."];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="UNVObjectMaskMananger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger.html",tooltip="Mask base class: scan actors in the scene, assign them an ID based on mask type. "];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="UObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ObjectInstanceSegmentation" ,fontname="Helvetica"];
+  Node8 [label="FNVObjectSegmentation\l_Instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_f_n_v_object_segmentation___instance.html"];
+  Node9 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" VertexColorMaskManager" ,fontname="Helvetica"];
+  Node9 [label="UNVObjectMaskMananger\l_VertexColor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger___vertex_color.html",tooltip="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..."];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" NoiseActorManager\nGroupActorManager" ,fontname="Helvetica"];
+  Node10 [label="AGroupActorManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_group_actor_manager.html"];
+  Node3 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" LayoutGenerator" ,fontname="Helvetica"];
+  Node11 [label="USpatialLayoutGenerator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_spatial_layout_generator.html"];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

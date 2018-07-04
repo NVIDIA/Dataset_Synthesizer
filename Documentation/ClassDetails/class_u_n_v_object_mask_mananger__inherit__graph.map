@@ -1,0 +1,4 @@
+<map id="UNVObjectMaskMananger" name="UNVObjectMaskMananger">
+<area shape="rect" id="node3" href="$class_u_n_v_object_mask_mananger___stencil.html" title="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..." alt="" coords="5,155,181,196"/>
+<area shape="rect" id="node4" href="$class_u_n_v_object_mask_mananger___vertex_color.html" title="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..." alt="" coords="205,155,381,196"/>
+</map>

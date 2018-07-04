@@ -1,0 +1,12 @@
+digraph "ANVSceneCapturerHUD"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{ANVSceneCapturerHUD\n|# bDrawDebugCuboidIn3d\l# bShowDebugCapturerPath\l# bShowExportActorDebug\l# CuboidDirectionDebugLength\l# CuboidDirectionRotation_HACK\l# DebugCapturerDirectionLength\l# DebugCapturerPathColor\l# DebugCapturerPathLifeTime\l# DebugCuboidVertexColor\l# DebugFont\land 9 more...\l|+ ANVSceneCapturerHUD()\l+ BeginPlay()\l+ DrawHUD()\l+ EndPlay()\l+ GetHUDOverlay()\l+ GetShowExportActorDebug()\l+ SetShowExportActorDebug()\l+ ToggleOverlay()\l+ ToggleShowExportActorDebug()\l# DrawCuboid2d()\l# DrawCuboid3d()\l# DrawDebugInfo()\l# DrawDebugInfo_ExportedActor()\l# DrawDebugInfo_HumanPose()\l# DrawDebugPoint2d()\l# DrawLineBetweenSocket()\l# DrawProjectedLine()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{AHUD\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #HUDOverlay" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{UNVSceneCapturerHUD\l_Overlay\n||+ UNVSceneCapturerHUD\l_Overlay()\l+ ToggleExporterControlPanel()\l+ Update()\l# NativeOnMouseButtonUp()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_capturer_h_u_d___overlay.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{UUserWidget\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

@@ -1,0 +1,5 @@
+<map id="FNVSceneCapturerViewpointSettings" name="FNVSceneCapturerViewpointSettings">
+<area shape="rect" id="node2" href="$struct_f_n_v_scene_capturer_settings.html" title="FNVSceneCapturerSettings" alt="" coords="85,95,267,121"/>
+<area shape="rect" id="node3" href="$struct_f_camera_intrinsic_settings.html" title="FCameraIntrinsicSettings" alt="" coords="5,5,173,32"/>
+<area shape="rect" id="node4" href="$struct_f_n_v_image_size.html" title="FNVImageSize" alt="" coords="208,5,317,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="FNVSceneCaptureComponentData" name="FNVSceneCaptureComponentData">
+<area shape="rect" id="node2" href="$class_u_n_v_scene_capture_component2_d.html" title="UNVSceneCaptureComponent2D" alt="" coords="223,171,436,197"/>
+<area shape="rect" id="node4" href="$struct_f_n_v_texture_render_target_reader.html" title="FNVTextureRenderTargetReader" alt="" coords="225,81,434,108"/>
+<area shape="rect" id="node5" href="$struct_f_n_v_texture_reader.html" title="FNVTextureReader" alt="" coords="263,5,395,32"/>
+<area shape="rect" id="node6" href="$struct_f_n_v_image_size.html" title="FNVImageSize" alt="" coords="459,81,568,108"/>
+</map>

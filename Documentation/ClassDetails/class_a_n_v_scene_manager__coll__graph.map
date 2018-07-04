@@ -1,0 +1,7 @@
+<map id="ANVSceneManager" name="ANVSceneManager">
+<area shape="rect" id="node3" href="$struct_f_n_v_object_segmentation___class.html" title="FNVObjectSegmentation\l_Class" alt="" coords="92,261,259,303"/>
+<area shape="rect" id="node4" href="$class_u_n_v_object_mask_mananger___stencil.html" title="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..." alt="" coords="82,157,258,199"/>
+<area shape="rect" id="node5" href="$class_u_n_v_object_mask_mananger.html" title="Mask base class: scan actors in the scene, assign them an ID based on mask type. " alt="" coords="139,81,315,108"/>
+<area shape="rect" id="node8" href="$class_u_n_v_object_mask_mananger___vertex_color.html" title="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..." alt="" coords="282,157,458,199"/>
+<area shape="rect" id="node7" href="$struct_f_n_v_object_segmentation___instance.html" title="FNVObjectSegmentation\l_Instance" alt="" coords="283,261,449,303"/>
+</map>

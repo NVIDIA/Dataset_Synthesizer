@@ -1,0 +1,16 @@
+<map id="UNVSceneFeatureExtractor_ScenePixelVelocity" name="UNVSceneFeatureExtractor_ScenePixelVelocity">
+<area shape="rect" id="node2" href="$class_u_n_v_scene_feature_extractor___pixel_data.html" title="Base class for all the feature extractors that capture the scene view in pixel data format..." alt="" coords="1921,273,2104,314"/>
+<area shape="rect" id="node3" href="$class_u_n_v_scene_feature_extractor.html" title="UNVSceneFeatureExtractor" alt="" coords="1689,152,1872,179"/>
+<area shape="rect" id="node13" href="$class_u_n_v_scene_data_handler.html" title="Base interface for serializing/visualizing captured pixel and annotation data. " alt="" coords="213,93,370,120"/>
+<area shape="rect" id="node5" href="$class_u_n_v_scene_capturer_viewpoint_component.html" title="UNVSceneCapturerViewpointComponent: Represents each viewpoint from where the capturer captures data..." alt="" coords="1353,199,1544,241"/>
+<area shape="rect" id="node7" href="$class_a_n_v_scene_capturer_actor.html" title="The scene exporter actor. " alt="" coords="999,145,1165,172"/>
+<area shape="rect" id="node9" href="$struct_f_n_v_scene_capturer_settings.html" title="FNVSceneCapturerSettings" alt="" coords="602,257,785,284"/>
+<area shape="rect" id="node15" href="$struct_f_n_v_scene_capturer_viewpoint_settings.html" title="FNVSceneCapturerViewpoint\lSettings" alt="" coords="987,263,1177,305"/>
+<area shape="rect" id="node10" href="$struct_f_camera_intrinsic_settings.html" title="FCameraIntrinsicSettings" alt="" coords="207,212,375,239"/>
+<area shape="rect" id="node11" href="$struct_f_n_v_image_size.html" title="FNVImageSize" alt="" coords="237,279,346,305"/>
+<area shape="rect" id="node16" href="$class_u_n_v_scene_capture_component2_d.html" title="UNVSceneCaptureComponent2D" alt="" coords="587,339,800,365"/>
+<area shape="rect" id="node12" href="$class_u_n_v_scene_data_visualizer.html" title="NVSceneDataVisualizer &#45; visualize all the captured data (image buffer and object annotation info) usi..." alt="" coords="608,93,779,120"/>
+<area shape="rect" id="node14" href="$struct_f_n_v_frame_counter.html" title="FNVFrameCounter" alt="" coords="628,43,759,69"/>
+<area shape="rect" id="node18" href="$struct_f_n_v_texture_render_target_reader.html" title="FNVTextureRenderTargetReader" alt="" coords="187,397,396,424"/>
+<area shape="rect" id="node19" href="$struct_f_n_v_texture_reader.html" title="FNVTextureReader" alt="" coords="5,397,137,424"/>
+</map>

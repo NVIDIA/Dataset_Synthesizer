@@ -1,0 +1,11 @@
+<map id="UNVSceneFeatureExtractor" name="UNVSceneFeatureExtractor">
+<area shape="rect" id="node11" href="$class_u_n_v_scene_data_handler.html" title="Base interface for serializing/visualizing captured pixel and annotation data. " alt="" coords="129,95,287,121"/>
+<area shape="rect" id="node3" href="$class_u_n_v_scene_capturer_viewpoint_component.html" title="UNVSceneCapturerViewpointComponent: Represents each viewpoint from where the capturer captures data..." alt="" coords="1219,90,1409,131"/>
+<area shape="rect" id="node5" href="$class_a_n_v_scene_capturer_actor.html" title="The scene exporter actor. " alt="" coords="864,149,1031,176"/>
+<area shape="rect" id="node7" href="$struct_f_n_v_scene_capturer_settings.html" title="FNVSceneCapturerSettings" alt="" coords="483,263,665,289"/>
+<area shape="rect" id="node13" href="$struct_f_n_v_scene_capturer_viewpoint_settings.html" title="FNVSceneCapturerViewpoint\lSettings" alt="" coords="852,233,1043,274"/>
+<area shape="rect" id="node8" href="$struct_f_camera_intrinsic_settings.html" title="FCameraIntrinsicSettings" alt="" coords="124,288,292,315"/>
+<area shape="rect" id="node9" href="$struct_f_n_v_image_size.html" title="FNVImageSize" alt="" coords="153,237,263,264"/>
+<area shape="rect" id="node10" href="$class_u_n_v_scene_data_visualizer.html" title="NVSceneDataVisualizer &#45; visualize all the captured data (image buffer and object annotation info) usi..." alt="" coords="489,156,659,183"/>
+<area shape="rect" id="node12" href="$struct_f_n_v_frame_counter.html" title="FNVFrameCounter" alt="" coords="509,43,639,69"/>
+</map>

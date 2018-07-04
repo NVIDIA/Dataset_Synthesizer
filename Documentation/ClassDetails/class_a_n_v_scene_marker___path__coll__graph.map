@@ -1,0 +1,4 @@
+<map id="ANVSceneMarker_Path" name="ANVSceneMarker_Path">
+<area shape="rect" id="node3" href="$class_i_n_v_scene_marker_interface.html" title="Base interface for object that can be placed in the map as marker for other actors. " alt="" coords="92,5,261,32"/>
+<area shape="rect" id="node4" href="$struct_f_n_v_scene_marker_component.html" title="Anchor for point of interest in map. " alt="" coords="285,5,476,32"/>
+</map>

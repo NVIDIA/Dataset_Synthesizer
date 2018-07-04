@@ -1,0 +1,9 @@
+digraph "SpatialLayoutGenerator" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_6afef73b746a448c54f3241966cf63e7 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Public" fontname="Helvetica", fontsize="10", URL="dir_6afef73b746a448c54f3241966cf63e7.html"]
+  dir_b979a2bd4c2c02bacc8de4a6ab8cfced [shape=box, label="SpatialLayoutGenerator", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_b979a2bd4c2c02bacc8de4a6ab8cfced.html"];
+  }
+}

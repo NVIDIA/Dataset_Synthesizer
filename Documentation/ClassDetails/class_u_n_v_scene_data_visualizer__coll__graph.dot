@@ -1,0 +1,10 @@
+digraph "UNVSceneDataVisualizer"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="UNVSceneDataVisualizer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="UNVSceneDataHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_scene_data_handler.html",tooltip="Base interface for serializing/visualizing captured pixel and annotation data. "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="UObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

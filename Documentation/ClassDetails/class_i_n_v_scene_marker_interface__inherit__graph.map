@@ -1,0 +1,5 @@
+<map id="INVSceneMarkerInterface" name="INVSceneMarkerInterface">
+<area shape="rect" id="node2" href="$class_a_n_v_scene_marker___focal_point.html" title="ANVSceneMarker_FocalPoint" alt="" coords="5,80,200,107"/>
+<area shape="rect" id="node3" href="$class_a_n_v_scene_marker___path.html" title="ANVSceneMarker_Path" alt="" coords="224,80,384,107"/>
+<area shape="rect" id="node4" href="$class_a_n_v_scene_marker___volume.html" title="ANVSceneMarker_Volume" alt="" coords="409,80,586,107"/>
+</map>

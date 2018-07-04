@@ -1,0 +1,12 @@
+digraph "UNVObjectMaskMananger"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="UNVObjectMaskMananger",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="UObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="UNVObjectMaskMananger\l_Stencil",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger___stencil.html",tooltip="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="UNVObjectMaskMananger\l_VertexColor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger___vertex_color.html",tooltip="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..."];
+}

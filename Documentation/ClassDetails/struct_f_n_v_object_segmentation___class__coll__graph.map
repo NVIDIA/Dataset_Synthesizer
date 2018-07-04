@@ -1,0 +1,4 @@
+<map id="FNVObjectSegmentation_Class" name="FNVObjectSegmentation_Class">
+<area shape="rect" id="node2" href="$class_u_n_v_object_mask_mananger___stencil.html" title="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..." alt="" coords="5,157,181,199"/>
+<area shape="rect" id="node3" href="$class_u_n_v_object_mask_mananger.html" title="Mask base class: scan actors in the scene, assign them an ID based on mask type. " alt="" coords="5,81,181,108"/>
+</map>

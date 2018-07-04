@@ -1,0 +1,8 @@
+<map id="ANVSceneCapturerActor" name="ANVSceneCapturerActor">
+<area shape="rect" id="node3" href="$struct_f_n_v_scene_capturer_settings.html" title="FNVSceneCapturerSettings" alt="" coords="483,56,665,83"/>
+<area shape="rect" id="node4" href="$struct_f_camera_intrinsic_settings.html" title="FCameraIntrinsicSettings" alt="" coords="124,11,292,37"/>
+<area shape="rect" id="node5" href="$struct_f_n_v_image_size.html" title="FNVImageSize" alt="" coords="153,61,263,88"/>
+<area shape="rect" id="node6" href="$class_u_n_v_scene_data_visualizer.html" title="NVSceneDataVisualizer &#45; visualize all the captured data (image buffer and object annotation info) usi..." alt="" coords="489,169,659,196"/>
+<area shape="rect" id="node7" href="$class_u_n_v_scene_data_handler.html" title="Base interface for serializing/visualizing captured pixel and annotation data. " alt="" coords="129,133,287,160"/>
+<area shape="rect" id="node9" href="$struct_f_n_v_frame_counter.html" title="FNVFrameCounter" alt="" coords="509,220,639,247"/>
+</map>

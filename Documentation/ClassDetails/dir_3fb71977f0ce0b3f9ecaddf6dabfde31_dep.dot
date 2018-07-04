@@ -1,0 +1,10 @@
+digraph "UEModules" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_3fb71977f0ce0b3f9ecaddf6dabfde31 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_3fb71977f0ce0b3f9ecaddf6dabfde31.html"];
+    dir_3fb71977f0ce0b3f9ecaddf6dabfde31 [shape=plaintext label="UEModules"];
+    dir_7f5478c7abf878db3974d8ea3e24e9d7 [shape=box label="Plugins" color="red" fillcolor="white" style="filled" URL="dir_7f5478c7abf878db3974d8ea3e24e9d7.html"];
+  }
+}

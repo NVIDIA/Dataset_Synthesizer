@@ -1,0 +1,12 @@
+digraph "FNVObjectSegmentation_Instance"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="FNVObjectSegmentation\l_Instance",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" VertexColorMaskManager" ,fontname="Helvetica"];
+  Node2 [label="UNVObjectMaskMananger\l_VertexColor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger___vertex_color.html",tooltip="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="UNVObjectMaskMananger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_u_n_v_object_mask_mananger.html",tooltip="Mask base class: scan actors in the scene, assign them an ID based on mask type. "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="UObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

@@ -1,0 +1,12 @@
+<map id="NVSceneCapturerActor.h" name="NVSceneCapturerActor.h">
+<area shape="rect" id="node3" href="$_n_v_scene_capturer_utils_8h.html" title="NVSceneCapturerUtils.h" alt="" coords="1268,423,1431,449"/>
+<area shape="rect" id="node19" href="$_n_v_scene_feature_extractor_8h.html" title="NVSceneFeatureExtractor.h" alt="" coords="605,266,790,293"/>
+<area shape="rect" id="node26" href="$_n_v_scene_capturer_viewpoint_component_8h.html" title="NVSceneCapturerViewpoint\lComponent.h" alt="" coords="866,80,1049,121"/>
+<area shape="rect" id="node32" href="$_n_v_image_exporter_8h.html" title="NVImageExporter.h" alt="" coords="1783,348,1918,375"/>
+<area shape="rect" id="node35" href="$_n_v_scene_data_handler_8h.html" title="NVSceneDataHandler.h" alt="" coords="1489,266,1647,293"/>
+<area shape="rect" id="node4" href="$_n_v_scene_capturer_module_8h.html" title="NVSceneCapturerModule.h" alt="" coords="244,505,423,531"/>
+<area shape="rect" id="node14" href="$_n_v_camera_settings_8h.html" title="NVCameraSettings.h" alt="" coords="1431,505,1575,531"/>
+<area shape="rect" id="node23" href="$_n_v_texture_reader_8h.html" title="NVTextureReader.h" alt="" coords="98,348,233,375"/>
+<area shape="rect" id="node27" href="$_n_v_scene_feature_extractor___data_export_8h.html" title="NVSceneFeatureExtractor\l_DataExport.h" alt="" coords="307,169,482,211"/>
+<area shape="rect" id="node29" href="$_n_v_scene_feature_extractor___image_export_8h.html" title="NVSceneFeatureExtractor\l_ImageExport.h" alt="" coords="971,169,1146,211"/>
+</map>

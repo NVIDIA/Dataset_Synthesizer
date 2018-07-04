@@ -1,0 +1,13 @@
+digraph "NVSceneCapturerEditor" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ff7a804eb0d99e728e71e5ee447b999a {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Source" fontname="Helvetica", fontsize="10", URL="dir_ff7a804eb0d99e728e71e5ee447b999a.html"]
+  subgraph clusterdir_24926342cb8b13b83a8a51a5491cdaf4 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_24926342cb8b13b83a8a51a5491cdaf4.html"];
+    dir_24926342cb8b13b83a8a51a5491cdaf4 [shape=plaintext label="NVSceneCapturerEditor"];
+    dir_91b64e36c1948221776231f073f03483 [shape=box label="Public" color="black" fillcolor="white" style="filled" URL="dir_91b64e36c1948221776231f073f03483.html"];
+  }
+  }
+}

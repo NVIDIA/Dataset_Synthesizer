@@ -1,0 +1,25 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$class_u_camera_settings_factory_base.html" title="Base class for all the different ways to create a camera settings. " alt="" coords="123,13,321,40"/>
+<area shape="rect" id="node4" href="$class_u_n_v_data_object.html" title="UNVDataObject" alt="" coords="165,79,279,105"/>
+<area shape="rect" id="node5" href="$class_u_n_v_data_object_asset.html" title="UNVDataObjectAsset" alt="" coords="148,129,296,156"/>
+<area shape="rect" id="node6" href="$class_u_n_v_object_mask_mananger.html" title="Mask base class: scan actors in the scene, assign them an ID based on mask type. " alt="" coords="134,180,310,207"/>
+<area shape="rect" id="node9" href="$class_u_n_v_scene_data_handler.html" title="Base interface for serializing/visualizing captured pixel and annotation data. " alt="" coords="143,231,301,257"/>
+<area shape="rect" id="node12" href="$class_u_n_v_scene_feature_extractor.html" title="UNVSceneFeatureExtractor" alt="" coords="131,297,313,324"/>
+<area shape="rect" id="node19" href="$class_u_random_data_object.html" title="URandomDataObject" alt="" coords="150,421,294,448"/>
+<area shape="rect" id="node22" href="$class_u_spatial_layout_generator.html" title="USpatialLayoutGenerator" alt="" coords="139,531,305,557"/>
+<area shape="rect" id="node3" href="$class_u_camera_setting_factory___h_f_o_v.html" title="Create camera settings using horizontal field of view. " alt="" coords="369,5,573,32"/>
+<area shape="rect" id="node7" href="$class_u_n_v_object_mask_mananger___stencil.html" title="UNVObjectMaskMananger_Stencil scan actors in the scene, assign them an ID using StencilMask NOTE: Mas..." alt="" coords="383,57,559,98"/>
+<area shape="rect" id="node8" href="$class_u_n_v_object_mask_mananger___vertex_color.html" title="UNVObjectMaskMananger_VertexColor scan actors in the scene, assign them an ID using VertexColor (32bi..." alt="" coords="383,122,559,163"/>
+<area shape="rect" id="node10" href="$class_u_n_v_scene_data_exporter.html" title="NVSceneDataExporter &#45; export all the captured data (image buffer and object annotation info) to files..." alt="" coords="390,188,553,215"/>
+<area shape="rect" id="node11" href="$class_u_n_v_scene_data_visualizer.html" title="NVSceneDataVisualizer &#45; visualize all the captured data (image buffer and object annotation info) usi..." alt="" coords="386,239,557,265"/>
+<area shape="rect" id="node13" href="$class_u_n_v_scene_feature_extractor___annotation_data.html" title="UNVSceneFeatureExtractor\l_AnnotationData" alt="" coords="380,290,563,331"/>
+<area shape="rect" id="node14" href="$class_u_n_v_scene_feature_extractor___pixel_data.html" title="Base class for all the feature extractors that capture the scene view in pixel data format..." alt="" coords="380,355,563,397"/>
+<area shape="rect" id="node15" href="$class_u_n_v_scene_feature_extractor___scene_depth.html" title="Base class for all the feature extractors that export the scene&#39;s depth buffer. " alt="" coords="621,257,804,298"/>
+<area shape="rect" id="node16" href="$class_u_n_v_scene_feature_extractor___scene_pixel_velocity.html" title="UNVSceneFeatureExtractor\l_ScenePixelVelocity" alt="" coords="621,322,804,363"/>
+<area shape="rect" id="node17" href="$class_u_n_v_scene_feature_extractor___stencil_mask.html" title="Base class for all the feature extractors that export the scene&#39;s stencil mask buffer. " alt="" coords="621,387,804,429"/>
+<area shape="rect" id="node18" href="$class_u_n_v_scene_feature_extractor___vertex_color_mask.html" title="Base class for all the feature extractors that export the scene&#39;s vertex color buffer. " alt="" coords="621,453,804,494"/>
+<area shape="rect" id="node20" href="$class_u_random_movement_data_object.html" title="URandomMovementDataObject" alt="" coords="370,421,573,448"/>
+<area shape="rect" id="node21" href="$class_u_random_rotation_data_object.html" title="URandomRotationDataObject" alt="" coords="375,472,567,499"/>
+<area shape="rect" id="node23" href="$class_u_spatial_layout_generator___circle.html" title="USpatialLayoutGenerator\l_Circle" alt="" coords="388,523,555,565"/>
+<area shape="rect" id="node24" href="$class_u_spatial_layout_generator___grid2d.html" title="USpatialLayoutGenerator\l_Grid2d" alt="" coords="388,589,555,630"/>
+</map>
