@@ -10,7 +10,8 @@ Downloading
 This repository uses gitLFS:
 
 > **First, install git LFS (large file storage):** https://git-lfs.github.com/ 
-For further details, please see https://github.com/NVIDIA/Dataset_Synthesizer/Documentation/NDDS.pdf
+
+For further details, please see https://github.com/NVIDIA/Dataset_Synthesizer/blob/master/Documentation/NDDS.pdf
 
 
 Motivation
