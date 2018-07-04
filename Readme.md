@@ -2,7 +2,9 @@ Overview
 ========
 
 **NDDS** is a UE4 plugin from NVIDIA to empower computer vision researchers to export high-quality synthetic images with metadata. NDDS supports images, segmentation, depth, object pose, bounding box, keypoints, and custom stencils. In addition to the exporter, the plugin includes different components for generating highly randomized images. This randomization includes lighting, objects, camera position, poses, textures, and distractors, as well as camera path following, and so forth. Together, these components allow researchers to easily create randomized scenes for training deep neural networks.
+
 ![](./NDDSIntro.png)
+
 _Example of an image generated using NDDS, along with ground truth segmentation, depth, and object poses._
 
 Downloading
