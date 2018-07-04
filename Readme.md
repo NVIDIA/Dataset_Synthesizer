@@ -23,7 +23,7 @@ Training and testing deep learning systems is an expensive and involved task due
 Citation
 --------
 If you use this tool in a research project, please cite as follows:
-> \@article{to2018ndds,<br> Author = {Thang To, Jonathan Tremblay, Duncan McKay, Yukie Yamaguchi, Kirby Leung, Adrian Balanon, Jia Cheng, Stan Birchfield},<br> url= {https://github.com/NVIDIA/Dataset_Synthesizer},<br> Title = {NDDS: NVIDIA Deep Learning Dataset Synthesizer},<br> Year = {2018}<br>}
+> \@article{to2018ndds,<br> Author = {Thang To, Jonathan Tremblay, Duncan McKay, Yukie Yamaguchi, Kirby Leung, Adrian Balanon, Jia Cheng, Stan Birchfield},<br> url= { https://github.com/NVIDIA/Dataset_Synthesizer },<br> Title = {NDDS: NVIDIA Deep Learning Dataset Synthesizer},<br> Year = {2018}<br>}
 
 
 References
