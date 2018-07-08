@@ -9,9 +9,9 @@ _Example of an image generated using NDDS, along with ground truth segmentation,
 
 Downloading
 -----------
-This repository uses gitLFS:
+This repository uses gitLFS -- **DO NOT DOWNLOAD AS .ZIP**:
 
-> **First, install git LFS (large file storage):** https://git-lfs.github.com/ 
+> **First, install git LFS (large file storage):** https://git-lfs.github.com/ , **then clone**.
 
 For further details, please see https://github.com/NVIDIA/Dataset_Synthesizer/blob/master/Documentation/NDDS.pdf
 
