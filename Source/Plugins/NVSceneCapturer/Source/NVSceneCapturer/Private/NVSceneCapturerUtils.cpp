@@ -15,6 +15,8 @@
 #include "JsonObjectConverter.h"
 #include "Json.h"
 #include "MeshVertexPainter/MeshVertexPainter.h"
+#include "SkeletalMeshRenderData.h"
+#include "SkeletalMeshLODRenderData.h"
 
 //================================== FNVSceneExporterConfig ==================================
 FNVSceneExporterConfig::FNVSceneExporterConfig()
@@ -527,7 +529,7 @@ namespace NVSceneCapturerUtils
                 // If the mesh doesn't have a collision body setup then just use the mesh's vertexes themselves
                 if ((OutVertexes.Num() == 0) && CheckMesh && CheckMesh->RenderData)
                 {
-                    const FPositionVertexBuffer& MeshVertexBuffer = CheckMesh->RenderData->LODResources[0].PositionVertexBuffer;
+                    const FPositionVertexBuffer& MeshVertexBuffer = CheckMesh->RenderData->LODResources[0].VertexBuffers.PositionVertexBuffer;
                     const uint32 VertexesCount = MeshVertexBuffer.GetNumVertices();
 
                     for (uint32 i = 0; i < VertexesCount; i++)
@@ -712,14 +714,14 @@ namespace NVSceneCapturerUtils
             {
                 if (CheckSkinnedMeshComp)
                 {
-                    FSkeletalMeshResource* Resource = CheckSkinnedMeshComp->GetSkeletalMeshResource();
+                    FSkeletalMeshRenderData* Resource = CheckSkinnedMeshComp->GetSkeletalMeshRenderData();
 
                     for (int i = 0; i < CheckSkinnedMeshComp->LODInfo.Num(); i++)
                     {
                         // NOTE: We need to paint all the vertexes in the skeletal mesh
                         FSkelMeshComponentLODInfo& Info = CheckSkinnedMeshComp->LODInfo[i];
-                        FStaticLODModel& LODModel = Resource->LODModels[i];
-                        const int32 ExpectedNumVerts = LODModel.VertexBufferGPUSkin.GetNumVertices();
+                        FSkeletalMeshLODRenderData& LODModel = Resource->LODRenderData[i];
+                        const int32 ExpectedNumVerts = LODModel.StaticVertexBuffers.PositionVertexBuffer.GetNumVertices();
                         AllVertexInLODColors.Reset();
                         AllVertexInLODColors.SetNum(ExpectedNumVerts);
                         for (int j = 0; j < ExpectedNumVerts; j++)
@@ -844,7 +846,7 @@ namespace NVSceneCapturerUtils
                     // Always fallback to use the Render Data if the mesh doesn't have correct body setup
                     if (!bHaveBodyVertexData && StaticMesh->RenderData)
                     {
-                        const FPositionVertexBuffer& MeshVertexBuffer = StaticMesh->RenderData->LODResources[0].PositionVertexBuffer;
+                        const FPositionVertexBuffer& MeshVertexBuffer = StaticMesh->RenderData->LODResources[0].VertexBuffers.PositionVertexBuffer;
                         const uint32 VertexesCount = MeshVertexBuffer.GetNumVertices();
 
                         // Warn user when the mesh have a lot of vertexes since it can slow down the bounding box calculation
@@ -920,7 +922,7 @@ namespace NVSceneCapturerUtils
                     // Otherwise use the mesh's raw triangle vertexes
                     else if (StaticMesh->RenderData)
                     {
-                        const FPositionVertexBuffer& MeshVertexBuffer = StaticMesh->RenderData->LODResources[0].PositionVertexBuffer;
+                        const FPositionVertexBuffer& MeshVertexBuffer = StaticMesh->RenderData->LODResources[0].VertexBuffers.PositionVertexBuffer;
                         const uint32 VertexesCount = MeshVertexBuffer.GetNumVertices();
                         BoundingVertexes.Reserve(BoundingVertexes.Num() + VertexesCount);
                         for (uint32 i = 0; i < VertexesCount; i++)

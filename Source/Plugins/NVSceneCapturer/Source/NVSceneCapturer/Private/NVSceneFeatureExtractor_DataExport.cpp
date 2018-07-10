@@ -608,7 +608,7 @@ FBox2D UNVSceneFeatureExtractor_AnnotationData::Calculate2dAABB_MeshComplexColli
         // Fallback to use the mesh's render data if it doesn't have a valid body setup
         if (!bHaveBodyVertexData && CheckMesh && CheckMesh->RenderData)
         {
-            const FPositionVertexBuffer& MeshVertexBuffer = CheckMesh->RenderData->LODResources[0].PositionVertexBuffer;
+            const FPositionVertexBuffer& MeshVertexBuffer = CheckMesh->RenderData->LODResources[0].VertexBuffers.PositionVertexBuffer;
             const uint32 VertexesCount = MeshVertexBuffer.GetNumVertices();
             for (uint32 i = 0; i < VertexesCount; i++)
             {
