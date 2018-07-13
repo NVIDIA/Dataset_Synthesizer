@@ -5,7 +5,7 @@ Overview
 
 ![](./NDDSIntro.png)
 
-_Example of an image generated using NDDS, along with ground truth segmentation, depth, and object poses._
+_Example of an image generated using NDDS, along with ground truth segmentation, depth, and object poses._ <br> For utilities to help visualize annotation data associated with synthesized images, see the NVIDIA dataset utilities (NVDU) https://github.com/NVIDIA/Dataset_Utilities.
 
 Downloading
 -----------
@@ -23,7 +23,7 @@ Training and testing deep learning systems is an expensive and involved task due
 Citation
 --------
 If you use this tool in a research project, please cite as follows:
-> \@article{to2018ndds,<br> Author = {Thang To, Jonathan Tremblay, Duncan McKay, Yukie Yamaguchi, Kirby Leung, Adrian Balanon, Jia Cheng, Stan Birchfield},<br> url= { https://github.com/NVIDIA/Dataset_Synthesizer },<br> Title = {NDDS: NVIDIA Deep Learning Dataset Synthesizer},<br> Year = {2018}<br>}
+> \@misc{to2018ndds,<br> author = {Thang To and Jonathan Tremblay and Duncan McKay and Yukie Yamaguchi and Kirby Leung and Adrian Balanon and Jia Cheng and Stan Birchfield},<br> note= {\url{ https://github.com/NVIDIA/Dataset_Synthesizer }},<br> title = {{NDDS}: {NVIDIA} Deep Learning Dataset Synthesizer},<br> Year = 2018<br>}
 
 
 References
