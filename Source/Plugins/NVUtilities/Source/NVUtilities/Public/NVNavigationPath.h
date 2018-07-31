@@ -6,6 +6,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
 #include "NVNavigationPath.generated.h"
 
 class ANVWaypoint;

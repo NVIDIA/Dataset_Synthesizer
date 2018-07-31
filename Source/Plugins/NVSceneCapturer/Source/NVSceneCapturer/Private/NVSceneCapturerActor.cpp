@@ -12,13 +12,13 @@
 #include "NVSceneManager.h"
 #include "NVAnnotatedActor.h"
 #include "NVSceneDataHandler.h"
-#include "Factories/FbxAssetImportData.h"
 #include "Engine.h"
 #include "JsonObjectConverter.h"
 #if WITH_EDITOR
+#include "Factories/FbxAssetImportData.h"
 #include "UnrealEdGlobals.h"
 #include "Editor/UnrealEdEngine.h"
-#endif
+#endif // WITH_EDITOR
 
 const float MAX_StartCapturingDuration = 5.0f; // max duration to wait for ANVSceneCapturerActor::StartCapturing to successfully begin capturing before emitting warning messages
 

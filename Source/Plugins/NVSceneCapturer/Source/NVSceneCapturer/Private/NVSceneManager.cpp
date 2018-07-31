@@ -11,9 +11,9 @@
 #include "NVSceneManager.h"
 #include "NVSceneMarker.h"
 #include "Components/StaticMeshComponent.h"
-#include "Factories/FbxAssetImportData.h"
 #include "Engine.h"
 #if WITH_EDITOR
+#include "Factories/FbxAssetImportData.h"
 #include "UnrealEdGlobals.h"
 #include "Editor/UnrealEdEngine.h"
 #endif

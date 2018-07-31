@@ -14,9 +14,9 @@
 #include "NVAnnotatedActor.h"
 #include "NVSceneManager.h"
 #include "Engine.h"
-#include "Factories/FbxAssetImportData.h"
 #include "JsonObjectConverter.h"
 #if WITH_EDITOR
+#include "Factories/FbxAssetImportData.h"
 #include "UnrealEdGlobals.h"
 #include "Editor/UnrealEdEngine.h"
 #endif
@@ -77,7 +77,7 @@ bool UNVSceneDataExporter::HandleSceneAnnotationData(const TSharedPtr<FJsonObjec
 
 void UNVSceneDataExporter::OnStartCapturingSceneData()
 {
-    if (!ImageExporterThread)
+    if (!ImageExporterThread.IsValid())
     {
         ImageExporterThread = TUniquePtr<FNVImageExporter_Thread>(new FNVImageExporter_Thread(ImageWrapperModule));
     }
@@ -180,6 +180,7 @@ void UNVSceneDataExporter::ExportCapturerSettings()
                         UStaticMesh* ActorStaticMesh = ActorMeshComp->GetStaticMesh();
                         if (ActorStaticMesh)
                         {
+#if WITH_EDITOR
                             UFbxAssetImportData* FbxAssetImportData = Cast<UFbxAssetImportData>(ActorStaticMesh->AssetImportData);
                             FMatrix ImportMatrix = FMatrix::Identity;
 
@@ -216,6 +217,7 @@ void UNVSceneDataExporter::ExportCapturerSettings()
                             SceneAnnotatedActorData.exported_object_classes.Add(ActorClassName);
 
                             ActorClassNames.Add(ActorClassName);
+#endif // WITH_EDITOR
                         }
                     }
                 }
@@ -279,7 +281,10 @@ void UNVSceneDataExporter::ExportCapturerSettings()
 
 void UNVSceneDataExporter::OnStopCapturingSceneData()
 {
-    ImageExporterThread.Reset();
+	if (ImageExporterThread.IsValid())
+	{
+		ImageExporterThread->Stop();
+	}
 }
 
 void UNVSceneDataExporter::OnCapturingCompleted()

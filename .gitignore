@@ -58,6 +58,11 @@
 !*.txt
 !*.md
 
+# Other Doc files
+!*.pdf
+!*.png
+!*.mp4
+
 # Script files
 !*.bat
 !*.sh
@@ -151,9 +156,6 @@ Engine/Binaries/DotNET/AutomationScripts/BuildGraph.Automation.xml
 
 # Ignore version files in the Engine/Binaries directory created by UBT
 /Engine/Binaries/**/*.version
-
-# Ignore content folders
-Content/
 
 # Ignore DDC
 /Engine/DerivedDataCache/**

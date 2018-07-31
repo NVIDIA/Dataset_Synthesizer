@@ -21,6 +21,7 @@
 #include "PhysicsEngine/AggregateGeom.h"
 #include "PhysicsEngine/BodySetup.h"
 #include "PhysicsEngine/PhysicsAsset.h"
+#include "Components/SkeletalMeshComponent.h"
 
 //========================================== UNVSceneFeatureExtractor_DataExport ==========================================
 UNVSceneFeatureExtractor_AnnotationData::UNVSceneFeatureExtractor_AnnotationData(const FObjectInitializer& ObjectInitializer)

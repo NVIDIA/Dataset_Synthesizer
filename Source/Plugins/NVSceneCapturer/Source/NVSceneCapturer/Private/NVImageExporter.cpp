@@ -350,21 +350,10 @@ FNVImageExporter_Thread::FNVImageExporter_Thread(IImageWrapperModule* InImageWra
 
 FNVImageExporter_Thread::~FNVImageExporter_Thread()
 {
-    bIsRunning = false;
     ImageWrapperModule = nullptr;
-    QueuedImageData.Empty();
-
-    if (HavePendingImageEvent)
-    {
-        // Trigger the event so the thread doesn't wait anymore
-        HavePendingImageEvent->Trigger();
-        FPlatformProcess::ReturnSynchEventToPool(HavePendingImageEvent);
-        HavePendingImageEvent = nullptr;
-    }
-
     if (Thread)
     {
-        Thread->Kill();
+		Thread->Kill(true);
         Thread = nullptr;
     }
 }
@@ -432,6 +421,12 @@ uint32 FNVImageExporter_Thread::Run()
 void FNVImageExporter_Thread::Stop()
 {
     bIsRunning = false;
+    if (HavePendingImageEvent)
+    {
+        // Trigger the event so the thread doesn't wait anymore
+        HavePendingImageEvent->Trigger();
+    }
+	QueuedImageData.Empty();
 }
 
 uint32 FNVImageExporter_Thread::GetPendingImagesCount() const

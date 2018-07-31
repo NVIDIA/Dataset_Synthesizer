@@ -6,6 +6,8 @@
 
 #pragma once
 #include "NVSceneCapturerModule.h"
+#include "Components/ActorComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "IImageWrapper.h"
 #include "Runtime/Core/Public/Misc/FileHelper.h"
 #include "Kismet/BlueprintFunctionLibrary.h"

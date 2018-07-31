@@ -5,6 +5,7 @@
 */
 
 #include "NVDataObjectModule.h"
+#include "Runtime/Core/Public/Misc/FileHelper.h"
 #include "Components/ChildActorComponent.h"
 #include "EditorFramework/AssetImportData.h"
 #include "Serialization/JsonReader.h"

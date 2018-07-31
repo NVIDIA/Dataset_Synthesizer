@@ -131,16 +131,22 @@ void URandomMaterialComponent::PostEditChangeProperty(struct FPropertyChangedEve
         Super::PostEditChangeProperty(PropertyChangedEvent);
     }
 }
-
+#endif //WITH_EDITORONLY_DATA
 bool URandomMaterialComponent::HasMaterialToRandomize() const
 {
+#if WITH_EDITORONLY_DATA
     return bUseAllMaterialInDirectories? 
         MaterialStreamer.HasAssets() :
         (MaterialList.Num() > 0);
+#else
+    return false;
+#endif //WITH_EDITORONLY_DATA
 }
+
 
 class UMaterialInterface* URandomMaterialComponent::GetNextMaterial()
 {
+#if WITH_EDITORONLY_DATA
     // Choose a random material in the list
     UMaterialInterface* NewMaterial = nullptr;
     if (bUseAllMaterialInDirectories)
@@ -151,8 +157,8 @@ class UMaterialInterface* URandomMaterialComponent::GetNextMaterial()
     {
         NewMaterial = MaterialList[FMath::Rand() % MaterialList.Num()];
     }
-
     return NewMaterial;
-}
-
+#else
+    return nullptr;
 #endif //WITH_EDITORONLY_DATA
+}

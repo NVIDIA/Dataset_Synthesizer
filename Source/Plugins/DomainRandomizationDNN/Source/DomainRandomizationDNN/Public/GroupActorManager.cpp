@@ -322,6 +322,8 @@ void AGroupActorManager::Tick(float DeltaTime)
     }
 }
 
+
+
 void AGroupActorManager::DestroyManagedActors()
 {
     for (auto CheckActor : ManagedActors)
@@ -334,9 +336,7 @@ void AGroupActorManager::DestroyManagedActors()
     }
     ManagedActors.Reset();
 }
-
 #if WITH_EDITORONLY_DATA
-
 void AGroupActorManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
     const UProperty* PropertyThatChanged = PropertyChangedEvent.MemberProperty;

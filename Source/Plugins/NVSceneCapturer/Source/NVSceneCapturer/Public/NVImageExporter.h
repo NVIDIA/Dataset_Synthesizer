@@ -83,7 +83,7 @@ public:
 
 protected:
     FRunnableThread* Thread;
-    bool bIsRunning;
+    FThreadSafeBool bIsRunning;
 
     TQueue<FNVImageExporterData> QueuedImageData;
 

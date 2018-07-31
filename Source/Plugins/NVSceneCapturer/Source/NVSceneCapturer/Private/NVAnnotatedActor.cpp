@@ -8,9 +8,9 @@
 #include "NVAnnotatedActor.h"
 #include "NVCoordinateComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "Factories/FbxAssetImportData.h"
 #include "Engine.h"
 #if WITH_EDITOR
+#include "Factories/FbxAssetImportData.h"
 #include "UnrealEdGlobals.h"
 #include "Editor/UnrealEdEngine.h"
 #endif
@@ -244,6 +244,7 @@ FMatrix ANVAnnotatedActor::GetMeshInitialMatrix() const
     UStaticMesh* ActorStaticMesh = MeshComponent ? MeshComponent->GetStaticMesh() : nullptr;
     if (ActorStaticMesh)
     {
+#if WITH_EDITOR
         UFbxAssetImportData* FbxAssetImportData = Cast<UFbxAssetImportData>(ActorStaticMesh->AssetImportData);
         FMatrix MeshImportMatrix = FMatrix::Identity;
 
@@ -270,6 +271,7 @@ FMatrix ANVAnnotatedActor::GetMeshInitialMatrix() const
         MatY = -MatY;
         MeshInitialMatrix_OpenCV.SetAxes(nullptr, &MatY, nullptr);
         ResultFMatrix = MeshInitialMatrix_OpenCV;
+#endif // WITH_EDITOR
     }
     return ResultFMatrix;
 }

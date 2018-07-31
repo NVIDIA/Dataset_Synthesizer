@@ -1,5 +1,8 @@
+NVIDIA Deep learning Dataset Synthesizer (NDDS)
+===============================================
+
 Overview
-========
+--------
 
 **NDDS** is a UE4 plugin from NVIDIA to empower computer vision researchers to export high-quality synthetic images with metadata. NDDS supports images, segmentation, depth, object pose, bounding box, keypoints, and custom stencils. In addition to the exporter, the plugin includes different components for generating highly randomized images. This randomization includes lighting, objects, camera position, poses, textures, and distractors, as well as camera path following, and so forth. Together, these components allow researchers to easily create randomized scenes for training deep neural networks.
 
@@ -11,7 +14,7 @@ Downloading
 -----------
 This repository uses gitLFS -- **DO NOT DOWNLOAD AS .ZIP**:
 
-> **First, install git LFS (large file storage):** https://git-lfs.github.com/ , **then clone**.
+> **First, install git LFS (large file storage):** https://git-lfs.github.com/ , **then lfs clone**.
 
 For further details, please see https://github.com/NVIDIA/Dataset_Synthesizer/blob/master/Documentation/NDDS.pdf
 
