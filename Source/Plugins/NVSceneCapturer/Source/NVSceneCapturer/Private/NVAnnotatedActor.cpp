@@ -149,7 +149,7 @@ FMatrix ANVAnnotatedActor::CalculatePCA(const class UStaticMesh* Mesh)
         TArray<FVector> MeshVertices;
         MeshVertices.Reset();
 
-        const FPositionVertexBuffer& MeshVertexBuffer = Mesh->RenderData->LODResources[0].PositionVertexBuffer;
+        const FPositionVertexBuffer& MeshVertexBuffer = Mesh->RenderData->LODResources[0].VertexBuffers.PositionVertexBuffer;
         const uint32 VertexesCount = MeshVertexBuffer.GetNumVertices();
         if (VertexesCount != 0)
         {

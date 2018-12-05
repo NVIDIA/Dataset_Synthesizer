@@ -13,10 +13,12 @@
 #include "ImageUtils.h"
 #include "IImageWrapperModule.h"
 #if WITH_UNREALPNG
+THIRD_PARTY_INCLUDES_START
 #include "ThirdParty/zlib/zlib-1.2.5/Inc/zlib.h"
 #include "ThirdParty/libPNG/libPNG-1.5.2/png.h"
 #include "ThirdParty/libPNG/libPNG-1.5.2/pnginfo.h"
 #include <setjmp.h>
+THIRD_PARTY_INCLUDES_END
 // Disable warning "interaction between '_setjmp' and C++ object destruction is non-portable"
 #ifdef _MSC_VER
 #pragma warning(push)

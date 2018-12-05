@@ -11,8 +11,6 @@ public class NVDataObjectEditor : ModuleRules
 {
 	public NVDataObjectEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PublicIncludePaths.AddRange(new string[] { "NVDataObjectEditor/Public" });
- 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "Json", "JsonUtilities", "InputCore", "RHI", "UnrealEd", "DesktopPlatform", "MainFrame" });
         PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore", "UMG", "EditorStyle", "AssetTools", "AssetRegistry", "PlacementMode", "LevelEditor", "PropertyEditor" });
         PrivateDependencyModuleNames.AddRange(new string[] { "NVDataObject" });

@@ -12,10 +12,11 @@ public class NVUtilities : ModuleRules
 	public NVUtilities(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PrivateIncludePaths.AddRange(new string[] { "NVUtilities/Private" });
-		PublicIncludePaths.AddRange(new string[] { "NVUtilities/Public" });
  
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "Json", "JsonUtilities", "InputCore"});
         PrivateDependencyModuleNames.AddRange(new string[] { });
+
+        PrivatePCHHeaderFile = "Public/NVUtilitiesModule.h";
 
         bFasterWithoutUnity = true;
     }

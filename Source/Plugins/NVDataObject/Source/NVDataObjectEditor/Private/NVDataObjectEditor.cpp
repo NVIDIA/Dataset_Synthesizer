@@ -108,7 +108,7 @@ void IModuleNVDataObjectEditor::ScanDataObjects()
             const FString RelativePath = FPaths::GetPath(RelativeFilename);
             const FDateTime& FileTimestamp = TimestampIt.Value();
 
-            const FString NewDataPackagePath = PackageTools::SanitizePackageName(FPaths::Combine(DataObjectPackagePath, RelativePath, FileName));
+            const FString NewDataPackagePath = UPackageTools::SanitizePackageName(FPaths::Combine(DataObjectPackagePath, RelativePath, FileName));
 
             UPackage* NewDataPackage = nullptr;
             FString ExistingFilename;

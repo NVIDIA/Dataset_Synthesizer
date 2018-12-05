@@ -32,6 +32,6 @@ public class DomainRandomizationDNN : ModuleRules
             PublicDependencyModuleNames.Add("AssetRegistry");
         }
 
-        PublicIncludePaths.AddRange(new string[] { "DomainRandomizationDNN/Public" });
+        PrivatePCHHeaderFile = "Public/DomainRandomizationDNNPCH.h";
     }
 }

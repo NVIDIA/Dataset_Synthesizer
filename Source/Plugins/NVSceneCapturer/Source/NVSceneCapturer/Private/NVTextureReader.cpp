@@ -343,7 +343,6 @@ void FNVTextureReader::CopyTexture2d(class IRendererModule* RendererModule, FRHI
         RHICmdList.CopyToResolveTarget(
             DestRenderTarget.TargetableTexture,
             ReadbackTexture,
-            bKeepOriginalSurface,
             ResolveParams);
     }
 }
