@@ -1,6 +1,0 @@
-digraph "FNVDataExportSettings"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{FNVDataExportSettings\n|+ bExportImageCoordinateIn\lPixel\l+ bIgnoreHiddenActor\l+ BoundingBox2dType\l+ BoundsType\l+ bOutputEvenIfNoObjectsAre\lInView\l+ DistanceScaleRange\l+ IncludeObjectsType\l|+ FNVDataExportSettings()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-}

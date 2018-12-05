@@ -12,7 +12,8 @@ var indexSectionsWithContent =
   2: "n",
   3: "abcefghrst",
   4: "bcdefghimnorstvw",
-  5: "o"
+  5: "o",
+  6: "n"
 };
 
 var indexSectionNames =
@@ -22,7 +23,8 @@ var indexSectionNames =
   2: "namespaces",
   3: "functions",
   4: "variables",
-  5: "typedefs"
+  5: "typedefs",
+  6: "pages"
 };
 
 function convertToId(search)

@@ -4,6 +4,7 @@ var class_a_group_actor_manager =
     [ "BeginDestroy", "class_a_group_actor_manager.html#afaa09fa09e33fb8de922e04ec75ffb6f", null ],
     [ "BeginPlay", "class_a_group_actor_manager.html#a1254e394342f23f53984c5702c654cf1", null ],
     [ "CreateActorFromTemplate", "class_a_group_actor_manager.html#a77bdca3090cbf8087afa58dfc0076ed0", null ],
+    [ "DestroyManagedActors", "class_a_group_actor_manager.html#a7a7e75c0866ec3ecf00b191f162ee81f", null ],
     [ "PostLoad", "class_a_group_actor_manager.html#a402924bf73c9e61309e897a4b5a2c14b", null ],
     [ "ShouldSpawnRepeatively", "class_a_group_actor_manager.html#aff7b6f46b3fb8571beedc95fe68b43ec", null ],
     [ "SpawnActors", "class_a_group_actor_manager.html#a7029c29d9fb42d04461cd2fb391f6fa2", null ],

@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "NVIDIA DeepLearning Dataset Synthesizer (NDDS)", "index.html", [
+    [ "NVIDIA Deep learning Dataset Synthesizer (NDDS)", "index.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
@@ -18,9 +19,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_u_n_v_object_mask_mananger___stencil.html#afa45f6a62446f133e11ba814cec2d8d6",
-"class_u_random_light_component.html#a85c93d3a78fb9dba5747b26c8365320d",
-"struct_f_n_v_image_exporter_data.html#a67759ca7492e3e07a0d1d330edabb6e0"
+"class_u_n_v_object_mask_mananger___stencil.html#af746e7c5e5c45a437471d9b68924969c",
+"class_u_random_light_component.html#a6e499349280ac36c28a0a54833315f00",
+"struct_f_n_v_image_exporter_data.html#a0b9210987d6a67487ff925fde20c47ea"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

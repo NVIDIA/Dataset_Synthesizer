@@ -1,9 +1,0 @@
-digraph "Public" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_4cec7a22204615ddff340c00497da530 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="NVDataObjectEditor" fontname="Helvetica", fontsize="10", URL="dir_4cec7a22204615ddff340c00497da530.html"]
-  dir_986cc062779a08ef1d82e9e29bcdce09 [shape=box, label="Public", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_986cc062779a08ef1d82e9e29bcdce09.html"];
-  }
-}

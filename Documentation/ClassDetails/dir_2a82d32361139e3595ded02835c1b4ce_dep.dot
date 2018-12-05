@@ -1,9 +1,0 @@
-digraph "Movement" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_0f21858209a0cc98d1fa61a04c6b3f8b {
-    graph [ bgcolor="#ddddee", pencolor="black", label="Public" fontname="Helvetica", fontsize="10", URL="dir_0f21858209a0cc98d1fa61a04c6b3f8b.html"]
-  dir_2a82d32361139e3595ded02835c1b4ce [shape=box, label="Movement", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_2a82d32361139e3595ded02835c1b4ce.html"];
-  }
-}

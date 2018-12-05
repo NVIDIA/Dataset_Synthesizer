@@ -1,6 +1,0 @@
-digraph "FRandomAssetStreamer"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{FRandomAssetStreamer\n|# AllAssetReferences\l# AssetDirectories\l# AssetStreamer\l# LastLoadedAssetIndex\l# LastUsedAssetIndex\l# LoadedAssetReferences\l# LoadingAssetReferences\l# ManagedAssetClass\l# StreamableHandlePtr\l# StreamerCallbackPtr\l# UnusedAssetCount\l|+ FRandomAssetStreamer()\l+ FRandomAssetStreamer()\l+ ~FRandomAssetStreamer()\l+ GetNextAsset()\l+ GetNextAssetReference()\l+ HasAssets()\l+ Init()\l+ IsLoadingAssets()\l+ operator=()\l+ ScanPath()\l# LoadNextBatch()\l# OnAssetBatchLoaded()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-}

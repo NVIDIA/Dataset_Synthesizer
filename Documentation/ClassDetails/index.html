@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>NVIDIA DeepLearning Dataset Synthesizer (NDDS): Main Page</title>
+<title>NVIDIA DeepLearning Dataset Synthesizer (NDDS): NVIDIA Deep learning Dataset Synthesizer (NDDS)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(document).ready(function(){initNavTree('index.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,28 +87,31 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">NVIDIA DeepLearning Dataset Synthesizer (NDDS) Documentation</div>  </div>
+<div class="title">NVIDIA Deep learning Dataset Synthesizer (NDDS) </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><b>NDDS</b> is a UE4 plugin from NVIDIA to empower computer vision researchers to export high-quality synthetic images with metadata. NDDS supports images, segmentation, depth, object pose, bounding box, keypoints, and custom stencils. In addition to the exporter, the plugin includes different components for generating highly randomized images. This randomization includes lighting, objects, camera position, poses, textures, and distractors, as well as camera path following, and so forth. Together, these components allow researchers to easily create randomized scenes for training deep neural networks. </p><div class="image">
+<div class="textblock"><h2>Overview </h2>
+<p><b>NDDS</b> is a UE4 plugin from NVIDIA to empower computer vision researchers to export high-quality synthetic images with metadata. NDDS supports images, segmentation, depth, object pose, bounding box, keypoints, and custom stencils. In addition to the exporter, the plugin includes different components for generating highly randomized images. This randomization includes lighting, objects, camera position, poses, textures, and distractors, as well as camera path following, and so forth. Together, these components allow researchers to easily create randomized scenes for training deep neural networks.</p>
+<div class="image">
 <img src="NDDSIntro.png" alt="NDDSIntro.png"/>
 </div>
-<p> <em>Example of an image generated using NDDS, along with ground truth segmentation, depth, and object poses.</em></p>
+<p><em>Example of an image generated using NDDS, along with ground truth segmentation, depth, and object poses.</em> <br />
+ For utilities to help visualize annotation data associated with synthesized images, see the NVIDIA dataset utilities (NVDU) <a href="https://github.com/NVIDIA/Dataset_Utilities">https://github.com/NVIDIA/Dataset_Utilities</a>.</p>
 <h2>Downloading </h2>
-<p>This repository uses gitLFS:</p>
+<p>This repository uses gitLFS &ndash; <b>DO NOT DOWNLOAD AS .ZIP</b>:</p>
 <blockquote class="doxtable">
-<p><b>First, install git LFS (large file storage):</b> <a href="https://git-lfs.github.com/">https://git-lfs.github.com/</a> </p>
+<p><b>First, install git LFS (large file storage):</b> <a href="https://git-lfs.github.com/">https://git-lfs.github.com/</a> , <b>then lfs clone</b>. </p>
 </blockquote>
-<p>For further details, please see <a href="https://github.com/NVIDIA/Dataset_Synthesizer/Documentation/NDDS.pdf">https://github.com/NVIDIA/Dataset_Synthesizer/Documentation/NDDS.pdf</a></p>
+<p>For further details, please see <a href="https://github.com/NVIDIA/Dataset_Synthesizer/blob/master/Documentation/NDDS.pdf">https://github.com/NVIDIA/Dataset_Synthesizer/blob/master/Documentation/NDDS.pdf</a></p>
 <h2>Motivation </h2>
 <p>Training and testing deep learning systems is an expensive and involved task due to the need for hand-labeled data. This is problematic when the task demands expert knowledge or not-so-obvious annotations (e.g., 3D bounding box vertices). In order to overcome these limitations we have been exploring the use of simulators for generating labeled data. We have shown in [1,2] that highly randomized synthetic data can be used to train computer vision systems for real-world applications, thus showing successful domain transfer.</p>
 <h2>Citation </h2>
 <p>If you use this tool in a research project, please cite as follows: </p><blockquote class="doxtable">
-<p>@article{to2018ndds,<br />
- Author = {Thang To, Jonathan Tremblay, Duncan McKay, Yukie Yamaguchi, Kirby Leung, Adrian Balanon, Jia Cheng, Stan Birchfield},<br />
- url= {<a href="https://github.com/NVIDIA/Dataset_Synthesizer">https://github.com/NVIDIA/Dataset_Synthesizer</a>},<br />
- Title = {NDDS: NVIDIA Deep Learning Dataset Synthesizer},<br />
- Year = {2018}<br />
+<p>@misc{to2018ndds,<br />
+ author = {Thang To and Jonathan Tremblay and Duncan McKay and Yukie Yamaguchi and Kirby Leung and Adrian Balanon and Jia Cheng and Stan Birchfield},<br />
+ note= {{ <a href="https://github.com/NVIDIA/Dataset_Synthesizer">https://github.com/NVIDIA/Dataset_Synthesizer</a> }},<br />
+ title = {{NDDS}: {NVIDIA} Deep Learning Dataset Synthesizer},<br />
+ Year = 2018<br />
 } </p>
 </blockquote>
 <h2>References </h2>
@@ -119,7 +122,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 3 2018 21:20:53 for NVIDIA DeepLearning Dataset Synthesizer (NDDS) by
+    <li class="footer">Generated on Wed Dec 5 2018 15:01:39 for NVIDIA DeepLearning Dataset Synthesizer (NDDS) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>
