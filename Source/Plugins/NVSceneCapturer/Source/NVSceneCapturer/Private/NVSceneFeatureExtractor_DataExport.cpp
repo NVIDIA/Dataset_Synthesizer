@@ -129,6 +129,8 @@ void UNVSceneFeatureExtractor_AnnotationData::UpdateProjectionMatrix()
 
         if (CapturerSettings.bUseExplicitCameraIntrinsic)
         {
+            FCameraIntrinsicSettings CurrentIntrinsicSettings = CapturerSettings.CameraIntrinsicSettings;
+            CurrentIntrinsicSettings.UpdateSettings();
             ProjectionMatrix = CapturerSettings.CameraIntrinsicSettings.GetProjectionMatrix();
             ViewProjectionMatrix = UNVSceneCaptureComponent2D::BuildViewProjectionMatrix(ViewTransform, ProjectionMatrix);
         }

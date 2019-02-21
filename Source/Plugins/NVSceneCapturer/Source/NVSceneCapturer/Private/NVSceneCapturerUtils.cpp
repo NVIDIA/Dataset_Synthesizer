@@ -267,6 +267,7 @@ void FNVSceneCapturerSettings::PostEditChangeProperty(struct FPropertyChangedEve
         const FName ChangedPropName = PropertyThatChanged->GetFName();
         if (bUseExplicitCameraIntrinsic)
         {
+            CameraIntrinsicSettings.UpdateSettings();
             CameraIntrinsicMatrix = CameraIntrinsicSettings.GetIntrinsicMatrix();
             CameraProjectionMatrix = CameraIntrinsicSettings.GetProjectionMatrix();
         }
