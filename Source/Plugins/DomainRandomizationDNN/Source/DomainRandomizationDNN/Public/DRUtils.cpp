@@ -529,22 +529,27 @@ void FRandomAssetStreamer::ScanPath()
     {
         FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
 
-        FPrimaryAssetType PrimaryAssetType = FName(TEXT("Asset"));
+        FPrimaryAssetType PrimaryAssetType = ManagedAssetClass->GetFName();
         const bool bForceSynchronousScan = true;
         TArray<FString> AssetDirPaths;
         for (const auto& AssetDirectory : AssetDirectories)
         {
+            FString DirPath = AssetDirectory.Path;
+            FPaths::NormalizeDirectoryName(DirPath);
+            while (!DirPath.IsEmpty() && DirPath.EndsWith(TEXT("/")))
+            {
+                DirPath = DirPath.Left(DirPath.Len() - 1);
+            }
             // NOTE: All the directory must be inside the game's content folder
-            const FString& AssetDirPath = FPaths::Combine(TEXT("/Game"), AssetDirectory.Path);
+            const FString& AssetDirPath = FPaths::Combine(TEXT("/Game"), DirPath);
             AssetDirPaths.Add(AssetDirPath);
+
         }
         int32 AssetCount = AssetManager.ScanPathsForPrimaryAssets(PrimaryAssetType, AssetDirPaths, ManagedAssetClass, false, false, bForceSynchronousScan);
 
-        for (const auto& AssetDirectory : AssetDirectories)
+        for (const auto& AssetDirPath : AssetDirPaths)
         {
             TArray<FAssetData> AssetList;
-            // NOTE: All the directory must be inside the game's content folder
-            const FString& AssetDirPath = FPaths::Combine(TEXT("/Game"), AssetDirectory.Path);
 
             if (AssetRegistryModule.Get().GetAssetsByPath(*AssetDirPath, AssetList, true))
             {

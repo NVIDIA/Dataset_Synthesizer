@@ -172,5 +172,9 @@ Saved/
 # Explcitly ignore Mac DS_Store files, regardless of where they are
 .DS_Store
 
+# Ignore the captured/exported data
+NVCapturedData
+
 # Ignore VS / VS Code settings directory
 .vs
+.vscode
