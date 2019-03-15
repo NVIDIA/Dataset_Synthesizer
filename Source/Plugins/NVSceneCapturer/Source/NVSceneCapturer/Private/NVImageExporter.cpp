@@ -353,11 +353,7 @@ FNVImageExporter_Thread::FNVImageExporter_Thread(IImageWrapperModule* InImageWra
 FNVImageExporter_Thread::~FNVImageExporter_Thread()
 {
     ImageWrapperModule = nullptr;
-    if (Thread)
-    {
-		Thread->Kill(true);
-        Thread = nullptr;
-    }
+    Kill();
 }
 
 bool FNVImageExporter_Thread::ExportImage(const FNVTexturePixelData& ExportPixelData, const FString& ExportFilePath, const ENVImageFormat ExportImageFormat/*= ENVImageFormat::PNG*/)
@@ -423,12 +419,22 @@ uint32 FNVImageExporter_Thread::Run()
 void FNVImageExporter_Thread::Stop()
 {
     bIsRunning = false;
+    QueuedImageData.Empty();
     if (HavePendingImageEvent)
     {
         // Trigger the event so the thread doesn't wait anymore
         HavePendingImageEvent->Trigger();
+        HavePendingImageEvent->Reset();
     }
-	QueuedImageData.Empty();
+}
+
+void FNVImageExporter_Thread::Kill()
+{
+    if (Thread)
+    {
+        Thread->Kill(true);
+        Thread = nullptr;
+    }
 }
 
 uint32 FNVImageExporter_Thread::GetPendingImagesCount() const

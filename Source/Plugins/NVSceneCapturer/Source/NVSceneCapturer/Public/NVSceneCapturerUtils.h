@@ -216,6 +216,10 @@ public:    // Properties
     UPROPERTY()
     FString Class;
 
+    // The Id of the object instance
+    UPROPERTY()
+    uint32 instance_id;
+
     UPROPERTY(Transient)
     float truncated;
 

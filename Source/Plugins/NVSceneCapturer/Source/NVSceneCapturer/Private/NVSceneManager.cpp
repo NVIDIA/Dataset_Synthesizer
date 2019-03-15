@@ -135,14 +135,14 @@ void ANVSceneManager::BeginPlay()
                 if (CheckCapturer)
                 {
                     SceneCapturers.Add(CheckCapturer);
-                    // FIXME
-                    //SceneCaptureExportDirNames.Add(CheckCapturer->GetExportFolderName());
-
                     CheckCapturer->OnCompletedEvent.AddDynamic(this, &ANVSceneManager::OnCapturingCompleted);
                 }
             }
 
             UpdateSettingsFromCommandLine();
+
+            ObjectClassSegmentation.Init(this);
+            ObjectInstanceSegmentation.Init(this);
 
             if (bCaptureAtAllMarkers)
             {
@@ -154,12 +154,6 @@ void ANVSceneManager::BeginPlay()
                 CurrentMarkerIndex = 0;
                 SetupScene();
             }
-
-			ObjectClassSegmentation.Init(this);
-			ObjectInstanceSegmentation.Init(this);
-
-			ObjectClassSegmentation.ScanActors(World);
-			ObjectInstanceSegmentation.ScanActors(World);
         }
     }
 }
@@ -225,6 +219,9 @@ void ANVSceneManager::SetupScene()
 
         SetupSceneInternal();
 
+        // After the scene setup is done then start applying class and instance segmentation marks
+        UpdateSegmentationMask();
+
         // TODO: Broadcast Ready event
         SceneManagerState = ENVSceneManagerState::Ready;
 
@@ -245,6 +242,37 @@ void ANVSceneManager::SetupSceneInternal()
             {
                 SceneMarker->AddObserver(CheckCapturer);
             }
+        }
+    }
+}
+
+void ANVSceneManager::UpdateSegmentationMask()
+{
+    UWorld* World = GetWorld();
+    if (World)
+    {
+        ObjectClassSegmentation.ScanActors(World);
+
+        bool bNeedInstanceSegmentation = false;
+        for (ANVSceneCapturerActor* CheckCapturer : SceneCapturers)
+        {
+            if (CheckCapturer && CheckCapturer->bIsActive)
+            {
+                for (const auto& CheckFeatureExtractor : CheckCapturer->FeatureExtractorSettings)
+                {
+                    UNVSceneFeatureExtractor* CheckFeatureExtractorRef = CheckFeatureExtractor.FeatureExtractorRef;
+                    if (CheckFeatureExtractorRef && CheckFeatureExtractorRef->IsEnabled() && CheckFeatureExtractorRef->IsA(UNVSceneFeatureExtractor_VertexColorMask::StaticClass()))
+                    {
+                        bNeedInstanceSegmentation = true;
+                        break;
+                    }
+                }
+            }
+        }
+        // Only update the objects' instance segmentation if it need to be captured
+        if (bNeedInstanceSegmentation)
+        {
+            ObjectInstanceSegmentation.ScanActors(World);
         }
     }
 }

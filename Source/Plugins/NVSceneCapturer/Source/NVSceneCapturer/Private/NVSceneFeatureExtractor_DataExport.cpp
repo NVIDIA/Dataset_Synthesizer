@@ -10,6 +10,7 @@
 #include "NVSceneCapturerActor.h"
 #include "NVSceneCaptureComponent2D.h"
 #include "NVAnnotatedActor.h"
+#include "NVSceneManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -179,6 +180,15 @@ bool UNVSceneFeatureExtractor_AnnotationData::GatherActorData(const AActor* Chec
         // Fill in actor's data
         ActorData.Name = ObjectName;
         ActorData.Class = Tag ? Tag->Tag : ObjectName;
+        ANVSceneManager* NVSceneManagerPtr = ANVSceneManager::GetANVSceneManagerPtr();
+        if (NVSceneManagerPtr)
+        {
+            ActorData.instance_id = NVSceneManagerPtr->ObjectInstanceSegmentation.GetInstanceId(CheckActor);
+        }
+        else
+        {
+            ActorData.instance_id = 0;
+        }
         const FQuat& ActorQuaternion_UE4 = ActorToWorldTransform.GetRotation();
         const FRotator& ActorRotator_UE4 = ActorToWorldTransform.Rotator();
 

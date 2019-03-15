@@ -67,6 +67,10 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Capturer")
     void ResetState();
 
+    /// Update the segmentation masks for all the objects in the scene.
+    /// NOTE: This function should be called when the number of objects in the scene changed
+    void UpdateSegmentationMask();
+
 	UPROPERTY(EditAnywhere, Category = CapturerScene)
 	FNVObjectSegmentation_Class ObjectClassSegmentation;
 

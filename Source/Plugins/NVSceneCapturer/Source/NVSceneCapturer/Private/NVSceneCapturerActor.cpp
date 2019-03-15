@@ -249,6 +249,11 @@ void ANVSceneCapturerActor::CheckCaptureScene()
         }
         CapturedDuration = GetWorld()->GetRealTimeSeconds() - StartCapturingTimestamp;
     }
+    else
+    {
+        bNeedToExportScene = false;
+    }
+
     ANVSceneManager* ANVSceneManagerPtr = ANVSceneManager::GetANVSceneManagerPtr();
     // if ANVSceneManagerPtr is nullptr, then there's no scene manager and it's assumed the scene is static and thus ready, else check with the scene manager
     const bool bSceneIsReady = !ANVSceneManagerPtr || ANVSceneManagerPtr->GetState()== ENVSceneManagerState::Ready;
@@ -430,6 +435,13 @@ void ANVSceneCapturerActor::StartCapturing_Internal()
         }
         else
         {
+            ANVSceneManager* NVSceneManagerPtr = ANVSceneManager::GetANVSceneManagerPtr();
+            if (ensure(NVSceneManagerPtr))
+            {
+                // Make sure the segmentation mask of objects in the scene are up-to-date before capturing them
+                NVSceneManagerPtr->UpdateSegmentationMask();
+            }
+
             // Now we can start capture.
             UpdateCapturerSettings();
 

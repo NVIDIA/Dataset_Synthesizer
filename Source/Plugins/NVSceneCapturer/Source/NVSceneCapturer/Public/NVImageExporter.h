@@ -77,6 +77,7 @@ public:
 
     virtual uint32 Run();
     virtual void Stop() override;
+    void Kill();
 
     uint32 GetPendingImagesCount() const;
     bool IsExportingImage() const;

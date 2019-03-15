@@ -77,6 +77,13 @@ bool UNVSceneDataExporter::HandleSceneAnnotationData(const TSharedPtr<FJsonObjec
 
 void UNVSceneDataExporter::OnStartCapturingSceneData()
 {
+    // Make sure the image exporter thread from the previous session is stopped and killed so we can spin up a new one
+    if (ImageExporterThread.IsValid())
+    {
+        ImageExporterThread->Kill();
+        ImageExporterThread = nullptr;
+    }
+
     if (!ImageExporterThread.IsValid())
     {
         ImageExporterThread = TUniquePtr<FNVImageExporter_Thread>(new FNVImageExporter_Thread(ImageWrapperModule));
