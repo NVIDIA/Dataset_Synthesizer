@@ -70,9 +70,9 @@ void URandomMeshComponent::OnRandomization_Implementation()
                 OwnerActor->GetComponents(RandomMatCompList);
                 for (auto RandMatComp : RandomMatCompList)
                 {
-                    if (RandMatComp && RandMatComp->ShouldRandomize())
+                    if (RandMatComp)
                     {
-                        RandMatComp->Randomize();
+                        RandMatComp->Randomize(true);
                     }
                 }
             }

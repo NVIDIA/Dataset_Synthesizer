@@ -42,6 +42,19 @@ void URandomMaterialComponent::BeginPlay()
         MaterialStreamer.Init(MaterialDirectories, UMaterialInterface::StaticClass());
     }
 
+    // NOTE: Only randomize once if there's only 1 material to choose from
+    if (bUseAllMaterialInDirectories)
+    {
+        if (MaterialStreamer.GetAssetsCount() <= 1)
+        {
+            bOnlyRandomizeOnce = true;
+        }
+    }
+    else if (MaterialList.Num() <= 1)
+    {
+        bOnlyRandomizeOnce = true;
+    }
+
     Super::BeginPlay();
 }
 
@@ -58,6 +71,16 @@ void URandomMaterialComponent::OnRandomization_Implementation()
                                         (AffectedComponentType == EAffectedMaterialOwnerComponentType::AffectBothMeshAndDecalComponents);
 
     bool bActorMaterialChanged = false;
+
+    // Update the owner's mesh components list if it's not initialized
+    if (OwnerMeshComponents.Num() == 0)
+    {
+        AActor* OwnerActor = GetOwner();
+        if (OwnerActor)
+        {
+            OwnerMeshComponents = DRUtils::GetValidChildMeshComponents(OwnerActor);
+        }
+    }
 
     if (bAffectMeshComponents && (OwnerMeshComponents.Num() > 0))
     {
@@ -135,9 +158,7 @@ void URandomMaterialComponent::PostEditChangeProperty(struct FPropertyChangedEve
 bool URandomMaterialComponent::HasMaterialToRandomize() const
 {
 #if WITH_EDITORONLY_DATA
-    return bUseAllMaterialInDirectories? 
-        MaterialStreamer.HasAssets() :
-        (MaterialList.Num() > 0);
+    return bUseAllMaterialInDirectories ? MaterialStreamer.HasAssets() : (MaterialList.Num() > 0);
 #else
     return false;
 #endif //WITH_EDITORONLY_DATA

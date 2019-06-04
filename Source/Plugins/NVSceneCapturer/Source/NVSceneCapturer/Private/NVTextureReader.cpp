@@ -12,6 +12,7 @@
 #include "GlobalShader.h"
 #include "ScreenRendering.h"
 #include "PipelineStateCache.h"
+#include "CommonRenderResources.h"
 #include "RenderingThread.h"
 #include "RendererInterface.h"
 #include "StaticBoundShaderState.h"
@@ -95,22 +96,16 @@ bool FNVTextureReader::ReadPixelsData(FNVTexturePixelData& OutPixelsData)
     bool bResult = false;
     if (SourceTexture)
     {
-        auto RenderCommand = [this, &OutPixelsData = OutPixelsData](FRHICommandListImmediate& RHICmdList)
-        {
-            void* PixelDataBuffer = nullptr;
-            FIntPoint PixelSize = FIntPoint::ZeroValue;
-            RHICmdList.MapStagingSurface(SourceTexture, PixelDataBuffer, PixelSize.X, PixelSize.Y);
-
-            BuildPixelData(OutPixelsData, (uint8*)PixelDataBuffer, ReadbackPixelFormat, PixelSize, ReadbackSize);
-
-            RHICmdList.UnmapStagingSurface(SourceTexture);
-        };
-
-        ENQUEUE_UNIQUE_RENDER_COMMAND_ONEPARAMETER(
-            ReadPixelsFromTexture,
-            TFunction<void(FRHICommandListImmediate&)>, InRenderCommand, RenderCommand,
+        ENQUEUE_RENDER_COMMAND(ReadPixelsFromTexture)(
+            [this, &OutPixelsData = OutPixelsData](FRHICommandListImmediate& RHICmdList)
             {
-                InRenderCommand(RHICmdList);
+                void* PixelDataBuffer = nullptr;
+                FIntPoint PixelSize = FIntPoint::ZeroValue;
+                RHICmdList.MapStagingSurface(SourceTexture, PixelDataBuffer, PixelSize.X, PixelSize.Y);
+
+                BuildPixelData(OutPixelsData, (uint8*)PixelDataBuffer, ReadbackPixelFormat, PixelSize, ReadbackSize);
+
+                RHICmdList.UnmapStagingSurface(SourceTexture);
             });
 
         FlushRenderingCommands();
@@ -194,46 +189,40 @@ bool FNVTextureReader::ReadPixelsRaw(const FTexture2DRHIRef& NewSourceTexture, c
 
         // NOTE: This approach almost identical to function FViewportSurfaceReader::ResolveRenderTarget in FrameGrabber.cpp
         // The main different is we reading the pixels back from a render target instead of a viewport
-        auto RenderCommand = [=](FRHICommandListImmediate& RHICmdList)
-        {
-            FRHIResourceCreateInfo CreateInfo(FClearValueBinding::None);
-            // TODO: Can cache the ReadbackTexture and reuse it if the format and size doesn't change instead of creating it everytime we read like this
-            // Need to be careful with reusing the ReadbackTexture: need to make sure the texture is already finished reading
-            FTexture2DRHIRef ReadbackTexture = RHICreateTexture2D(
-                                                   TargetSize.X,
-                                                   TargetSize.Y,
-                                                   TargetPixelFormat,
-                                                   1,
-                                                   1,
-                                                   TexCreate_CPUReadback,
-                                                   CreateInfo
-                                               );
-
-            bool bOverwriteAlpha = !bIgnoreAlpha;
-            // Copy the source texture to the readback texture so we can read it back later even after the source texture is modified
-            CopyTexture2d(RendererModule, RHICmdList, NewSourceTexture, SourceRect, ReadbackTexture, FIntRect(FIntPoint::ZeroValue, TargetSize), bOverwriteAlpha);
-
-            // Stage the texture to read back its pixels data
-            FIntPoint PixelSize = FIntPoint::ZeroValue;
-            void* PixelDataBuffer = nullptr;
-            RHICmdList.MapStagingSurface(ReadbackTexture, PixelDataBuffer, PixelSize.X, PixelSize.Y);
-
-            if (PixelDataBuffer)
+        ENQUEUE_RENDER_COMMAND(ReadPixelsFromTexture)(
+            [=](FRHICommandListImmediate& RHICmdList)
             {
-                Callback((uint8*)PixelDataBuffer, TargetPixelFormat, PixelSize);
-            }
+                FRHIResourceCreateInfo CreateInfo(FClearValueBinding::None);
+                // TODO: Can cache the ReadbackTexture and reuse it if the format and size doesn't change instead of creating it everytime we read like this
+                // Need to be careful with reusing the ReadbackTexture: need to make sure the texture is already finished reading
+                FTexture2DRHIRef ReadbackTexture = RHICreateTexture2D(
+                                                       TargetSize.X,
+                                                       TargetSize.Y,
+                                                       TargetPixelFormat,
+                                                       1,
+                                                       1,
+                                                       TexCreate_CPUReadback,
+                                                       CreateInfo
+                                                   );
 
-            RHICmdList.UnmapStagingSurface(ReadbackTexture);
+                bool bOverwriteAlpha = !bIgnoreAlpha;
+                // Copy the source texture to the readback texture so we can read it back later even after the source texture is modified
+                CopyTexture2d(RendererModule, RHICmdList, NewSourceTexture, SourceRect, ReadbackTexture, FIntRect(FIntPoint::ZeroValue, TargetSize), bOverwriteAlpha);
 
-            ReadbackTexture.SafeRelease();
-        };
+                // Stage the texture to read back its pixels data
+                FIntPoint PixelSize = FIntPoint::ZeroValue;
+                void* PixelDataBuffer = nullptr;
+                RHICmdList.MapStagingSurface(ReadbackTexture, PixelDataBuffer, PixelSize.X, PixelSize.Y);
 
-        ENQUEUE_UNIQUE_RENDER_COMMAND_ONEPARAMETER(
-            ReadPixelFromTexture,
-            TFunction<void(FRHICommandListImmediate&)>, InRenderCommand, RenderCommand,
-        {
-            InRenderCommand(RHICmdList);
-        });
+                if (PixelDataBuffer)
+                {
+                    Callback((uint8*)PixelDataBuffer, TargetPixelFormat, PixelSize);
+                }
+
+                RHICmdList.UnmapStagingSurface(ReadbackTexture);
+
+                ReadbackTexture.SafeRelease();
+            });
         bResult = true;
     }
 
@@ -268,74 +257,78 @@ void FNVTextureReader::CopyTexture2d(class IRendererModule* RendererModule, FRHI
         // Get a temporary render target from the render thread's pool to draw the source render target on
         const FSceneRenderTargetItem& DestRenderTarget = ResampleTexturePooledRenderTarget->GetRenderTargetItem();
 
-        SetRenderTarget(RHICmdList, DestRenderTarget.TargetableTexture, FTextureRHIRef());
-        RHICmdList.SetViewport(0, 0, 0.0f, TargetSize.X, TargetSize.Y, 1.0f);
-
-        FGraphicsPipelineStateInitializer GraphicsPSOInit;
-        RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
-        //GraphicsPSOInit.BlendState = TStaticBlendState<>::GetRHI();
-        // NOTE: Render the source texture as is on to the target:
-        // RGB = src.rgb * 1 + dst.rgb * 0
-        // A = src.a * 1 + dst.a * 0
-        if (bOverwriteAlpha)
+        FRHIRenderPassInfo RPInfo(DestRenderTarget.TargetableTexture, ERenderTargetActions::Load_Store, ReadbackTexture);
+        RHICmdList.BeginRenderPass(RPInfo, TEXT("TextureReaderResolveRenderTarget"));
         {
-            GraphicsPSOInit.BlendState = TStaticBlendState<CW_RGBA, BO_Add, BF_One, BF_Zero, BO_Add, BF_One, BF_Zero>::GetRHI();
+            RHICmdList.SetViewport(0, 0, 0.0f, TargetSize.X, TargetSize.Y, 1.0f);
+
+            FGraphicsPipelineStateInitializer GraphicsPSOInit;
+            RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
+            //GraphicsPSOInit.BlendState = TStaticBlendState<>::GetRHI();
+            // NOTE: Render the source texture as is on to the target:
+            // RGB = src.rgb * 1 + dst.rgb * 0
+            // A = src.a * 1 + dst.a * 0
+            if (bOverwriteAlpha)
+            {
+                GraphicsPSOInit.BlendState = TStaticBlendState<CW_RGBA, BO_Add, BF_One, BF_Zero, BO_Add, BF_One, BF_Zero>::GetRHI();
+            }
+            else
+            {
+                // A = MAX(src.a, dst.a)
+                GraphicsPSOInit.BlendState = TStaticBlendState<CW_RGBA, BO_Add, BF_One, BF_Zero, BO_Max, BF_One, BF_One>::GetRHI();
+            }
+            GraphicsPSOInit.RasterizerState = TStaticRasterizerState<>::GetRHI();
+            GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState<false, CF_Always>::GetRHI();
+
+            const ERHIFeatureLevel::Type FeatureLevel = GMaxRHIFeatureLevel;
+
+            TShaderMap<FGlobalShaderType>* ShaderMap = GetGlobalShaderMap(FeatureLevel);
+            TShaderMapRef<FScreenVS> VertexShader(ShaderMap);
+            TShaderMapRef<FScreenPS> PixelShader(ShaderMap);
+
+            GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = GFilterVertexDeclaration.VertexDeclarationRHI;
+            GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER_VERTEX(*VertexShader);
+            GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER_PIXEL(*PixelShader);
+            GraphicsPSOInit.PrimitiveType = PT_TriangleList;
+
+            SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
+
+            // NOTE: Render the render target's texture to the temp texture in the GPU so we can copy the temp texture to the read-back texture in the CPU
+            const FIntPoint& FullSourceSize = NewSourceTexture->GetSizeXY();
+            const FIntPoint& SourceSize = SourceRect.Size();
+
+            ensure(FullSourceSize != FIntPoint::ZeroValue);
+            ensure(SourceSize != FIntPoint::ZeroValue);
+
+            if (TargetSize == SourceSize)
+            {
+                PixelShader->SetParameters(RHICmdList, TStaticSamplerState<SF_Point>::GetRHI(), NewSourceTexture);
+            }
+            // Must use Bilinear sampling if the size of the source and target regions are not the same
+            else
+            {
+                PixelShader->SetParameters(RHICmdList, TStaticSamplerState<SF_Bilinear>::GetRHI(), NewSourceTexture);
+            }
+
+            const float U = float(SourceRect.Min.X) / float(FullSourceSize.X);
+            const float V = float(SourceRect.Min.Y) / float(FullSourceSize.Y);
+            const float SizeU = float(SourceRect.Max.X) / float(FullSourceSize.X) - U;
+            const float SizeV = float(SourceRect.Max.Y) / float(FullSourceSize.Y) - V;
+
+            // Render the source texture to the target render target
+            RendererModule->DrawRectangle(
+                RHICmdList,
+                0, 0,                                   // Dest X, Y
+                TargetSize.X,                           // Dest Width
+                TargetSize.Y,                           // Dest Height
+                U, V,                                   // Source U, V
+                1, 1,                                   // Source USize, VSize
+                SourceRect.Max - SourceRect.Min,        // Target buffer size
+                FIntPoint(1, 1),                        // Source texture size
+                *VertexShader,
+                EDRF_Default);
         }
-        else
-        {
-            // A = MAX(src.a, dst.a)
-            GraphicsPSOInit.BlendState = TStaticBlendState<CW_RGBA, BO_Add, BF_One, BF_Zero, BO_Max, BF_One, BF_One>::GetRHI();
-        }
-        GraphicsPSOInit.RasterizerState = TStaticRasterizerState<>::GetRHI();
-        GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState<false, CF_Always>::GetRHI();
-
-        const ERHIFeatureLevel::Type FeatureLevel = GMaxRHIFeatureLevel;
-
-        TShaderMap<FGlobalShaderType>* ShaderMap = GetGlobalShaderMap(FeatureLevel);
-        TShaderMapRef<FScreenVS> VertexShader(ShaderMap);
-        TShaderMapRef<FScreenPS> PixelShader(ShaderMap);
-
-        GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule->GetFilterVertexDeclaration().VertexDeclarationRHI;
-        GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER_VERTEX(*VertexShader);
-        GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER_PIXEL(*PixelShader);
-        GraphicsPSOInit.PrimitiveType = PT_TriangleList;
-
-        SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
-
-        // NOTE: Render the render target's texture to the temp texture in the GPU so we can copy the temp texture to the read-back texture in the CPU
-        const FIntPoint& FullSourceSize = NewSourceTexture->GetSizeXY();
-        const FIntPoint& SourceSize = SourceRect.Size();
-
-        ensure(FullSourceSize != FIntPoint::ZeroValue);
-        ensure(SourceSize != FIntPoint::ZeroValue);
-
-        if (TargetSize == SourceSize)
-        {
-            PixelShader->SetParameters(RHICmdList, TStaticSamplerState<SF_Point>::GetRHI(), NewSourceTexture);
-        }
-        // Must use Bilinear sampling if the size of the source and target regions are not the same
-        else
-        {
-            PixelShader->SetParameters(RHICmdList, TStaticSamplerState<SF_Bilinear>::GetRHI(), NewSourceTexture);
-        }
-
-        const float U = float(SourceRect.Min.X) / float(FullSourceSize.X);
-        const float V = float(SourceRect.Min.Y) / float(FullSourceSize.Y);
-        const float SizeU = float(SourceRect.Max.X) / float(FullSourceSize.X) - U;
-        const float SizeV = float(SourceRect.Max.Y) / float(FullSourceSize.Y) - V;
-
-        // Render the source texture to the target render target
-        RendererModule->DrawRectangle(
-            RHICmdList,
-            0, 0,                                   // Dest X, Y
-            TargetSize.X,                           // Dest Width
-            TargetSize.Y,                           // Dest Height
-            U, V,                                   // Source U, V
-            1, 1,                                   // Source USize, VSize
-            SourceRect.Max - SourceRect.Min,        // Target buffer size
-            FIntPoint(1, 1),                        // Source texture size
-            *VertexShader,
-            EDRF_Default);
+        RHICmdList.EndRenderPass();
 
         // Asynchronously copy render target from GPU to CPU
         const bool bKeepOriginalSurface = false;
@@ -421,7 +414,8 @@ bool FNVTextureRenderTargetReader::ReadPixelsData(OnFinishedReadingPixelsDataCal
 
 bool FNVTextureRenderTargetReader::ReadPixelsData(FNVTexturePixelData& OutPixelsData)
 {
-    auto RenderCommand = [this, &OutPixelsData = OutPixelsData](FRHICommandListImmediate& RHICmdList)
+    ENQUEUE_RENDER_COMMAND(ReadPixelsFromTexture)(
+    [this, &OutPixelsData = OutPixelsData](FRHICommandListImmediate& RHICmdList)
     {
         const FTextureRenderTargetResource* RenderTargetResource = SourceRenderTarget->GetRenderTargetResource();
         ensure(RenderTargetResource);
@@ -440,13 +434,6 @@ bool FNVTextureRenderTargetReader::ReadPixelsData(FNVTexturePixelData& OutPixels
                 RHICmdList.UnmapStagingSurface(SourceTexture);
             }
         }
-    };
-
-    ENQUEUE_UNIQUE_RENDER_COMMAND_ONEPARAMETER(
-        ReadPixelsFromTexture,
-        TFunction<void(FRHICommandListImmediate&)>, InRenderCommand, RenderCommand,
-    {
-        InRenderCommand(RHICmdList);
     });
 
     FlushRenderingCommands();

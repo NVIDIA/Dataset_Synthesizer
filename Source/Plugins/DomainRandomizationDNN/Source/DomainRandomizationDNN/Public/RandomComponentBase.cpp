@@ -43,9 +43,9 @@ void URandomComponentBase::StopRandomizing()
     bShouldRandomize = false;
 }
 
-void URandomComponentBase::Randomize()
+void URandomComponentBase::Randomize(bool bForce)
 {
-    if (ShouldRandomize())
+    if (bForce || ShouldRandomize())
     {
         OnRandomization();
         bAlreadyRandomized = true;

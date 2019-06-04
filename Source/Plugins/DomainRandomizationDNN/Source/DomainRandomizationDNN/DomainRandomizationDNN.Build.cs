@@ -20,7 +20,6 @@ public class DomainRandomizationDNN : ModuleRules
                 "Engine",
                 "RHI",
                 "RenderCore",
-                "ShaderCore",
             }
         );
 

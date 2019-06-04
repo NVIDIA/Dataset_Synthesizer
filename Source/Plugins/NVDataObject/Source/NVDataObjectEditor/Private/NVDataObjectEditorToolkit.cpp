@@ -66,8 +66,8 @@ void FNVDataObjectEditorToolkit::InitEditor(const EToolkitMode::Type Mode, const
     const bool bAllowFavorites = true;
     const bool bIsLockable = false;
 
-    FEditorDelegates::OnAssetPostImport.AddRaw(this, &FNVDataObjectEditorToolkit::HandleAssetPostImport);
-    FEditorDelegates::OnAssetReimport.AddRaw(this, &FNVDataObjectEditorToolkit::HandleAssetReimport);
+    GEditor->GetEditorSubsystem<UImportSubsystem>()->OnAssetPostImport.AddRaw(this, &FNVDataObjectEditorToolkit::HandleAssetPostImport);
+    GEditor->GetEditorSubsystem<UImportSubsystem>()->OnAssetReimport.AddRaw(this, &FNVDataObjectEditorToolkit::HandleAssetReimport);
 
     FPropertyEditorModule& PropertyEditorModule = FModuleManager::GetModuleChecked<FPropertyEditorModule>("PropertyEditor");
     const FDetailsViewArgs DetailsViewArgs(bIsUpdatable, bIsLockable, true, FDetailsViewArgs::ObjectsUseNameArea, false);
@@ -96,9 +96,8 @@ void FNVDataObjectEditorToolkit::InitEditor(const EToolkitMode::Type Mode, const
 
     const bool bCreateDefaultStandaloneMenu = true;
     const bool bCreateDefaultToolbar = true;
-    const bool bIsToolbarFocusable = true;
     FAssetEditorToolkit::InitAssetEditor(Mode, InitToolkitHost, DataObjectEditorAppIdentifier,
-                                         StandaloneDefaultLayout, bCreateDefaultStandaloneMenu, bCreateDefaultToolbar, EditingAssets, bIsToolbarFocusable);
+                                         StandaloneDefaultLayout, bCreateDefaultStandaloneMenu, bCreateDefaultToolbar, EditingAssets, true);
 
     // @todo toolkit world centric editing
     // Setup our tool's layout
@@ -129,7 +128,8 @@ void FNVDataObjectEditorToolkit::InitEditor(const EToolkitMode::Type Mode, const
 
 FNVDataObjectEditorToolkit::~FNVDataObjectEditorToolkit()
 {
-    FEditorDelegates::OnAssetPostImport.RemoveAll(this);
+    GEditor->GetEditorSubsystem<UImportSubsystem>()->OnAssetPostImport.RemoveAll(this);
+    GEditor->GetEditorSubsystem<UImportSubsystem>()->OnAssetReimport.RemoveAll(this);
 
     DetailsView.Reset();
     PropertiesTab.Reset();
@@ -267,21 +267,21 @@ FLinearColor FNVDataObjectEditorToolkit::GetWorldCentricTabColorScale() const
     return FLinearColor(0.0f, 0.0f, 1.0f, 0.5f);
 }
 
-void FNVDataObjectEditorToolkit::RegisterTabSpawners(const TSharedRef<class FTabManager>& TabManager)
+void FNVDataObjectEditorToolkit::RegisterTabSpawners(const TSharedRef<class FTabManager>& NewTabManager)
 {
-    WorkspaceMenuCategory = TabManager->AddLocalWorkspaceMenuCategory(LOCTEXT("WorkspaceMenu_GenericAssetEditor", "Asset Editor"));
+    WorkspaceMenuCategory = NewTabManager->AddLocalWorkspaceMenuCategory(LOCTEXT("WorkspaceMenu_GenericAssetEditor", "Asset Editor"));
 
-    FAssetEditorToolkit::RegisterTabSpawners(TabManager);
+    FAssetEditorToolkit::RegisterTabSpawners(NewTabManager);
 
-    TabManager->RegisterTabSpawner(PropertiesTabId, FOnSpawnTab::CreateSP(this, &FNVDataObjectEditorToolkit::SpawnPropertiesTab))
+    NewTabManager->RegisterTabSpawner(PropertiesTabId, FOnSpawnTab::CreateSP(this, &FNVDataObjectEditorToolkit::SpawnPropertiesTab))
     .SetDisplayName(LOCTEXT("PropertiesTab", "Details"))
     .SetGroup(WorkspaceMenuCategory.ToSharedRef())
     .SetIcon(FSlateIcon(FEditorStyle::GetStyleSetName(), "LevelEditor.Tabs.Details"));
 }
 
-void FNVDataObjectEditorToolkit::UnregisterTabSpawners(const TSharedRef<class FTabManager>& TabManager)
+void FNVDataObjectEditorToolkit::UnregisterTabSpawners(const TSharedRef<class FTabManager>& OldTabManager)
 {
-    FAssetEditorToolkit::UnregisterTabSpawners(TabManager);
+    FAssetEditorToolkit::UnregisterTabSpawners(OldTabManager);
 
     TabManager->UnregisterTabSpawner(PropertiesTabId);
 }

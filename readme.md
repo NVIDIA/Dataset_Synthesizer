@@ -18,6 +18,15 @@ This repository uses gitLFS -- **DO NOT DOWNLOAD AS .ZIP**:
 
 For further details, please see https://github.com/NVIDIA/Dataset_Synthesizer/blob/master/Documentation/NDDS.pdf
 
+**`RELEASE NOTES: 4.22 known issue`**
+
+<!--This NDDS version uses UE4 version `4.22` with the following release note: -->
+> If you are using material randomization with more than 10 objects which change materials every frame, you might encounter a hang when stopping the play-in-editor session.  The capturing process will still work, but the `uniform buffer memory` will keep increasing and when user stops the capture session, it takes UE extended time to release the memory.  If it takes too long after stopping the play-in-editor session, we recommend to simply shutdown the editor and restart it.  The only other workaround is to keep using UE4.21, which requires use of NDDS v1.1.
+> 
+> This problem is specific to UE4 4.22, as it now automatically uses mesh instancing to improve the performance when rendering a large quantity of meshes.  Now, every time a new mesh is created or its material is changed, the `uniform buffer memory` allocation is increased.          
+> 
+> This problem affects both DirectX and OpenGL users.  Although Vulkan doesn't get affected by this, Vulkan doesn't capture depth and class segmentation.
+
 
 Motivation
 ----------
@@ -26,7 +35,7 @@ Training and testing deep learning systems is an expensive and involved task due
 Citation
 --------
 If you use this tool in a research project, please cite as follows:
-> \@misc{to2018ndds,<br> author = {Thang To and Jonathan Tremblay and Duncan McKay and Yukie Yamaguchi and Kirby Leung and Adrian Balanon and Jia Cheng and Stan Birchfield},<br> note= {\url{ https://github.com/NVIDIA/Dataset_Synthesizer }},<br> title = {{NDDS}: {NVIDIA} Deep Learning Dataset Synthesizer},<br> Year = 2018<br>}
+> \@misc{to2018ndds,<br> author = {Thang To and Jonathan Tremblay and Duncan McKay and Yukie Yamaguchi and Kirby Leung and Adrian Balanon and Jia Cheng and William Hodge and Stan Birchfield},<br> note= {\url{ https://github.com/NVIDIA/Dataset_Synthesizer }},<br> title = {{NDDS}: {NVIDIA} Deep Learning Dataset Synthesizer},<br> Year = 2018<br>}
 
 
 References

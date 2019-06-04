@@ -581,6 +581,11 @@ void FRandomAssetStreamer::ScanPath()
 #endif // WITH_EDITORONLY_DATA
 }
 
+int FRandomAssetStreamer::GetAssetsCount() const
+{
+    return AllAssetReferences.Num();
+}
+
 bool FRandomAssetStreamer::HasAssets() const
 {
     return (AllAssetReferences.Num() > 0);

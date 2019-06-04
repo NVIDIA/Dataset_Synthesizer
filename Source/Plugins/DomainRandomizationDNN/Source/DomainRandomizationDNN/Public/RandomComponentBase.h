@@ -20,7 +20,7 @@ public:
     URandomComponentBase();
 
     bool ShouldRandomize() const;
-    void Randomize();
+    void Randomize(bool bForce = false);
     void StartRandomizing();
     void StopRandomizing();
 

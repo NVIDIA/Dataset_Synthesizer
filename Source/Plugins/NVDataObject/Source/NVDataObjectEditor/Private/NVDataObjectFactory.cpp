@@ -156,7 +156,7 @@ UObject* UNVDataObjectFactory::FactoryCreateText(UClass* InClass, UObject* InPar
     }
     else
     {
-        FEditorDelegates::OnAssetPreImport.Broadcast(this, InClass, InParent, InName, Type);
+        GEditor->GetEditorSubsystem<UImportSubsystem>()->BroadcastAssetPreImport(this, InClass, InParent, InName, Type);
 
         // Get the string from the input buffer
         FString TextDataString;
@@ -219,8 +219,8 @@ EReimportResult::Type UNVDataObjectFactory::Reimport(UObject* Obj)
             }
             const FString SourceFilePath = DataObjectAsset->AssetImportData->GetFirstFilename();
             const FString SourceFileName = FPaths::GetBaseFilename(SourceFilePath, true);
-            EObjectFlags ObjectFlags = RF_Public | RF_Standalone | RF_Transactional;
-            UNVDataObject* ImportedDataObject = UNVDataObject::DeserializeFromJsonFile(SourceFilePath, DataObjectAsset, *SourceFileName, ObjectFlags);
+            EObjectFlags DataObjectFlags = RF_Public | RF_Standalone | RF_Transactional;
+            UNVDataObject* ImportedDataObject = UNVDataObject::DeserializeFromJsonFile(SourceFilePath, DataObjectAsset, *SourceFileName, DataObjectFlags);
             if (ImportedDataObject)
             {
                 DataObjectAsset->DataObject = ImportedDataObject;

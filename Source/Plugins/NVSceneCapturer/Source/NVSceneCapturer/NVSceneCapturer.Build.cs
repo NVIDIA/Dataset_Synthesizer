@@ -13,7 +13,7 @@ public class NVSceneCapturer : ModuleRules
 	{
 		PrivateIncludePaths.AddRange(new string[] { "NVSceneCapturer/Private" });
  
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "Json", "JsonUtilities", "InputCore", "RHI", "RenderCore", "ShaderCore"});
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "Json", "JsonUtilities", "InputCore", "RHI", "RenderCore"});
         PublicDependencyModuleNames.AddRange(new string[] { "MovieSceneCapture", "ImageWrapper" });
 
         PrivateDependencyModuleNames.AddRange(new string[] { "zlib", "UElibPNG" } );

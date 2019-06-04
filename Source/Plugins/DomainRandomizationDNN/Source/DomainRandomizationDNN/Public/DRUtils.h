@@ -310,6 +310,7 @@ public:
     void Init(const TArray<FDirectoryPath>& InAssetDirectories, UClass* InAssetClass);
     void ScanPath();
 
+    int GetAssetsCount() const;
     bool HasAssets() const;
     FSoftObjectPath GetNextAssetReference();
 
