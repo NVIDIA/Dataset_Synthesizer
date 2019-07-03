@@ -43,7 +43,8 @@ void UNVSceneCapturerViewpointComponent::SetupFeatureExtractors()
         if (FeatureExtractor && FeatureExtractor->IsEnabled())
         {
             UClass* ExtractorClass = FeatureExtractor->GetClass();
-            FName NewExtractorName = MakeUniqueObjectName(this, ExtractorClass, *FeatureExtractor->GetDisplayName());
+            FName NewExtractorName = FName(*FString::Printf(TEXT("%s.%s"), *this->GetName(), *FeatureExtractor->GetDisplayName()));
+            NewExtractorName = MakeUniqueObjectName(this, ExtractorClass, NewExtractorName);
             UNVSceneFeatureExtractor* NewSubFeatureExtractor = NewObject<UNVSceneFeatureExtractor>(GetOwner(),
                     ExtractorClass, NewExtractorName, EObjectFlags::RF_Transient, FeatureExtractor);
             if (NewSubFeatureExtractor)

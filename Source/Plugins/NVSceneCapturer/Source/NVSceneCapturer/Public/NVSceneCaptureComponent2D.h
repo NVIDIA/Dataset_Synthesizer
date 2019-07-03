@@ -98,6 +98,8 @@ public: // Editor properties
     UPROPERTY(EditAnywhere, Category = "SceneCapture")
     TEnumAsByte<ETextureRenderTargetFormat> TextureTargetFormat;
 
+    // Pixel format of the texture used to capture the scene
+    // NOTE: This can be different from the TextureTargetFormat
     UPROPERTY(EditAnywhere, Category = "SceneCapture")
     TEnumAsByte<EPixelFormat> OverrideTexturePixelFormat;
 

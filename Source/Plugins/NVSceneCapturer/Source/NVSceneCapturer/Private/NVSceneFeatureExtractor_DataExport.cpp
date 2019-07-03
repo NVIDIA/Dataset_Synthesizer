@@ -193,12 +193,14 @@ bool UNVSceneFeatureExtractor_AnnotationData::GatherActorData(const AActor* Chec
         const FRotator& ActorRotator_UE4 = ActorToWorldTransform.Rotator();
 
         // OpenCV coordinate system
-        ActorData.quaternion_worldspace = NVSceneCapturerUtils::ConvertQuaternionToOpenCVCoordinateSystem(ActorToWorldMatrix_UE4.ToQuat());
+        // NOTE: The actor transform matrix may included scaling, if we just use ToQuat(), UE4 will just return [0, 0, 0, 1] when the rotation matrix is not an identity matrix
+        // => we need to convert it first using GetMatrixWithoutScale
+        ActorData.quaternion_worldspace = NVSceneCapturerUtils::ConvertQuaternionToOpenCVCoordinateSystem(ActorToWorldMatrix_UE4.GetMatrixWithoutScale().ToQuat());
         ActorData.rotation_worldspace = ActorData.quaternion_worldspace.Rotator();
 
-        const FQuat& ActorCamQuat_OpenCV = ActorToCameraMatrix_OpenCV.ToQuat();
+        const FQuat& ActorCamQuat_OpenCV = ActorToCameraMatrix_OpenCV.GetMatrixWithoutScale().ToQuat();
         const FVector& ActorCamLocation_OpenCV = ActorToCameraMatrix_OpenCV.GetOrigin();
-        ActorData.quaternion_xyzw = NVSceneCapturerUtils::ConvertQuaternionToOpenCVCoordinateSystem(ActorToCameraMatrix_UE4.ToQuat());
+        ActorData.quaternion_xyzw = NVSceneCapturerUtils::ConvertQuaternionToOpenCVCoordinateSystem(ActorToCameraMatrix_UE4.GetMatrixWithoutScale().ToQuat());
         ActorData.rotation = ActorToCameraMatrix_UE4.Rotator();
 
         ActorData.actor_to_camera_matrix = ActorToCameraMatrix_OpenCV;

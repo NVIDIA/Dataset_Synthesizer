@@ -51,6 +51,8 @@ bool CanPixelFormatBeExported(EPixelFormat CheckPixelFormat)
 	case EPixelFormat::PF_A16B16G16R16:
 	case EPixelFormat::PF_G32R32F:
 	case EPixelFormat::PF_G8:
+    case EPixelFormat::PF_R8_UINT:
+	case EPixelFormat::PF_R16F:
 	case EPixelFormat::PF_ShadowDepth:
 		return true;
 	default:
@@ -228,7 +230,7 @@ TArray<uint8> FNVImageExporter::CompressImagePNG(const FNVTexturePixelData& Sour
             }
 			else
 			{
-				UE_LOG(LogNVSceneCapturer, Error, TEXT("Unsupported pixel format."));
+				UE_LOG(LogNVSceneCapturer, Error, TEXT("Invalid export image settings."));
 			}
         }
     }

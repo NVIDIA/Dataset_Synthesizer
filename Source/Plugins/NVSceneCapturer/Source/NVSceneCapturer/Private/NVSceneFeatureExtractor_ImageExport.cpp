@@ -51,24 +51,21 @@ UNVSceneCaptureComponent2D* UNVSceneFeatureExtractor_PixelData::CreateSceneCaptu
     UNVSceneCaptureComponent2D* NewSceneCaptureComp2D = nullptr;
     if (OwnerViewpoint)
     {
-        const FName NewSceneCaptureComponentName = MakeUniqueObjectName(OwnerViewpoint, GetClass(),
-            *FString::Printf(TEXT("%s_%s"), *GetDisplayName(), *ComponentName));
-
         AActor* OwnerActor = OwnerCapturer ? OwnerCapturer : OwnerViewpoint->GetOwner();
+        const FName NewSceneCaptureComponentName = MakeUniqueObjectName(OwnerActor, GetClass(),
+            *FString::Printf(TEXT("%s_%s"), *GetName(), *ComponentName));
         NewSceneCaptureComp2D = NewObject<UNVSceneCaptureComponent2D>(OwnerActor,
             UNVSceneCaptureComponent2D::StaticClass(), NewSceneCaptureComponentName, EObjectFlags::RF_Transient);
 
         if (NewSceneCaptureComp2D)
         {
+            NewSceneCaptureComp2D->SetupAttachment(OwnerViewpoint);
             if (bOverrideShowFlagSettings)
             {
                 NewSceneCaptureComp2D->ShowFlagSettings = OverrideShowFlagSettings;
             }
 
             const auto& CapturerSettings = OwnerViewpoint->GetCapturerSettings();
-
-            FAttachmentTransformRules AttachmentTransformRule = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
-            NewSceneCaptureComp2D->AttachToComponent(OwnerViewpoint, AttachmentTransformRule);
 
             NewSceneCaptureComp2D->TextureTargetSize = CapturerSettings.CapturedImageSize;
             NewSceneCaptureComp2D->FOVAngle = CapturerSettings.GetFOVAngle();

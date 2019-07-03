@@ -81,15 +81,28 @@ void UNVSceneCaptureComponent2D::InitTextureRenderTarget()
         // Automatically create a new texture if there's no valid TextureTarget specified
         const FName TextureTargetName = MakeUniqueObjectName(this, UTextureRenderTarget2D::StaticClass(), TEXT("SceneCaptureTextureTarget"));
         TextureTarget = NewObject<UTextureRenderTarget2D>(this, TextureTargetName);
-        ensure(TextureTarget);
-        if (TextureTarget)
+        if (ensure(TextureTarget))
         {
-            TextureTarget->TargetGamma = GEngine ? GEngine->GetDisplayGamma() : 0.f;
+            // Only use SRGB and engine gamma for the RGBA8 format, not for other pixel format.
+            // Check FTextureRenderTarget2DResource::InitDynamicRHI to see how they set flag bUseSRGB base on gamma
+            // NOTE: This code assume any other format than the RGBA8 encode exact number values into the texture and want to readback exact encoded value
+            // TODO: We may need to have a separated flag indicate whether we want to use gamma and/or SRGB on the render target or not
+            if (TextureTargetFormat == RTF_RGBA8)
+            {
+                TextureTarget->TargetGamma = GEngine ? GEngine->GetDisplayGamma() : 0.f;
+                TextureTarget->SRGB = true;
+            }
+            else
+            {
+                TextureTarget->TargetGamma = 1.f;
+                TextureTarget->SRGB = false;
+            }
+
             TextureTarget->bForceLinearGamma = false;
-            TextureTarget->SRGB = false;
             TextureTarget->bAutoGenerateMips = false;
             TextureTarget->bNeedsTwoCopies = true;
             TextureTarget->bGPUSharedFlag = true;
+
             if (OverrideTexturePixelFormat == EPixelFormat::PF_Unknown)
             {
                 TextureTarget->RenderTargetFormat = TextureTargetFormat;
