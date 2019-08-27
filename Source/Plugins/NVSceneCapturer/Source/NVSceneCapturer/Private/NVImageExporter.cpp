@@ -50,7 +50,8 @@ bool CanPixelFormatBeExported(EPixelFormat CheckPixelFormat)
 	case EPixelFormat::PF_R32_UINT:
 	case EPixelFormat::PF_A16B16G16R16:
 	case EPixelFormat::PF_G32R32F:
-	case EPixelFormat::PF_G8:
+    case EPixelFormat::PF_G8:
+    case EPixelFormat::PF_R8G8:
     case EPixelFormat::PF_R8_UINT:
 	case EPixelFormat::PF_R16F:
 	case EPixelFormat::PF_ShadowDepth:
@@ -72,10 +73,15 @@ bool GetExportedImageSettings(EPixelFormat ImgPixelFormat, uint8& ImageBitDepth,
 	{
 		ImgPixelFormat = PF_B8G8R8A8;
 	}
-	else if (ImgPixelFormat == PF_G32R32F)
-	{
-		ImgPixelFormat = PF_A16B16G16R16;
-	}
+    else if (ImgPixelFormat == PF_G32R32F)
+    {
+        ImgPixelFormat = PF_A16B16G16R16;
+    }
+    // Use the 16 bits grayscale format for R8G8
+    else if (ImgPixelFormat == PF_R8G8)
+    {
+        ImgPixelFormat = PF_R16_UINT;
+    }
 
 	ImageBitDepth = NVSceneCapturerUtils::GetBitCountPerChannel(ImgPixelFormat);
 	const uint8 ImgColorChannelCount = NVSceneCapturerUtils::GetColorChannelCount(ImgPixelFormat);

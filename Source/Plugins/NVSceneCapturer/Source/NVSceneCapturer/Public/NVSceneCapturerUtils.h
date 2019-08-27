@@ -60,9 +60,9 @@ enum ENVCapturedPixelFormat
 	/// Use this format for the normal full color image type
 	RGBA8,
 
-	/// R channel, 16 bit per channel floating point, range [-65504, 65504]
-	/// Use this format for the grayscale 16 bits image type
-	R16f,
+    /// RG channel, 8 bit per channel, range [65535]
+    /// Use this format for the grayscale 16 bits image type
+    R8G8,
 
 	/// R channel, 32 bit per channel floating point, range [-3.402823 x 10^38, 3.402823 x 10^38]
 	/// NOTE: This format capture to 32 bits floating point value and can be exported to RGBA8 format

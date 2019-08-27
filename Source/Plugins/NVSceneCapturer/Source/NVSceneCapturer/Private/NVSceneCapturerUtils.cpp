@@ -162,8 +162,8 @@ ETextureRenderTargetFormat ConvertCapturedFormatToRenderTargetFormat(ENVCaptured
 	{
 	case ENVCapturedPixelFormat::R8:
 		return ETextureRenderTargetFormat::RTF_R8;
-	case ENVCapturedPixelFormat::R16f:
-		return ETextureRenderTargetFormat::RTF_R16f;
+    case ENVCapturedPixelFormat::R8G8:
+        return ETextureRenderTargetFormat::RTF_RG8;
 	case ENVCapturedPixelFormat::R32f:
 		return ETextureRenderTargetFormat::RTF_R32f;
 	case ENVCapturedPixelFormat::RGBA8:

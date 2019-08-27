@@ -28,6 +28,7 @@ ANVSceneCapturerActor::ANVSceneCapturerActor(const FObjectInitializer& ObjectIni
     CollisionComponent->SetSphereRadius(20.f);
     CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
     CollisionComponent->SetCollisionResponseToAllChannels(ECR_Block);
+    CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECR_Ignore);
     RootComponent = CollisionComponent;
 
     PrimaryActorTick.bCanEverTick = true;
