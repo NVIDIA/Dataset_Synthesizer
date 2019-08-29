@@ -512,10 +512,10 @@ namespace NVSceneCapturerUtils
             const UStaticMeshComponent* StaticMeshComp = Cast<UStaticMeshComponent>(MeshComp);
             if (StaticMeshComp)
             {
+                const FTransform& MeshTransform = StaticMeshComp->GetComponentTransform();
                 const UStaticMesh* CheckMesh = StaticMeshComp->GetStaticMesh();
                 if (CheckMesh && CheckMesh->BodySetup)
                 {
-                    const FTransform& MeshTransform = StaticMeshComp->GetComponentTransform();
                     const FKAggregateGeom& MeshGeom = CheckMesh->BodySetup->AggGeom;
 
                     for (const FKConvexElem& ConvexElem : MeshGeom.ConvexElems)
@@ -535,7 +535,8 @@ namespace NVSceneCapturerUtils
 
                     for (uint32 i = 0; i < VertexesCount; i++)
                     {
-                        OutVertexes.Add(MeshVertexBuffer.VertexPosition(i));
+                        const FVector& VertexWorldLocation = MeshTransform.TransformPosition(MeshVertexBuffer.VertexPosition(i));
+                        OutVertexes.Add(VertexWorldLocation);
                     }
                 }
             }
