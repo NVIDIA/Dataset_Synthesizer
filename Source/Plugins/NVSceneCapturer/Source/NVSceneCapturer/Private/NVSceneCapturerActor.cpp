@@ -369,6 +369,7 @@ void ANVSceneCapturerActor::CaptureSceneToPixelsData()
     }
 
     LastCaptureTimestamp = CurrentTime;
+    bNeedToExportScene = false;
 }
 
 void ANVSceneCapturerActor::UpdateCapturerSettings()

@@ -113,7 +113,7 @@ UNVSceneCaptureComponent2D* UNVSceneFeatureExtractor_PixelData::CreateSceneCaptu
             // Hide actors in the list of ignored actors
             for (AActor* CheckActor : IgnoreActors)
             {
-                if (!CheckActor)
+                if (CheckActor)
                 {
                     NewSceneCaptureComp2D->HideActorComponents(CheckActor);
                 }
