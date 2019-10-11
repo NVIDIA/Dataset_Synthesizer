@@ -613,6 +613,20 @@ float ANVSceneCapturerActor::GetCapturedDuration() const
     return CapturedDuration;
 }
 
+int32 ANVSceneCapturerActor::GetExportedFrameCount() const
+{
+    UNVSceneDataExporter* CurrentSceneDataExporter = Cast<UNVSceneDataExporter>(SceneDataHandler);
+    if (CurrentSceneDataExporter)
+    {
+        uint32 PendingToExportImagesCount = CurrentSceneDataExporter->GetPendingToExportImagesCount();
+        uint32 PendingToExportFrameCount = (ImageToCapturePerFrame > 0) ? FMath::CeilToFloat(float(PendingToExportImagesCount) / ImageToCapturePerFrame) : PendingToExportImagesCount;
+        uint32 CapturedFrameCount = GetCapturedFrameCounter().GetTotalFrameCount();
+        return (PendingToExportFrameCount <= CapturedFrameCount) ? (CapturedFrameCount - PendingToExportFrameCount) : 0;
+    }
+
+    return 0;
+}
+
 TArray<FNVNamedImageSizePreset> const& ANVSceneCapturerActor::GetImageSizePresets()
 {
     return GetDefault<ANVSceneCapturerActor>()->ImageSizePresets;
@@ -659,6 +673,23 @@ void ANVSceneCapturerActor::UpdateViewpointList()
         {
             return A.GetDisplayName() < B.GetDisplayName();
         });
+    }
+
+    // Count the number of images we need to capture and export every frame
+    ImageToCapturePerFrame = 0;
+    for (const auto& CheckViewpointComp : ViewpointList)
+    {
+        if (CheckViewpointComp)
+        {
+            for (const auto& CheckSceneFeatureExtractor : CheckViewpointComp->FeatureExtractorList)
+            {
+                const UNVSceneFeatureExtractor_PixelData* FeatureExtractorScenePixels = Cast<UNVSceneFeatureExtractor_PixelData>(CheckSceneFeatureExtractor);
+                if (FeatureExtractorScenePixels && FeatureExtractorScenePixels->IsEnabled())
+                {
+                    ImageToCapturePerFrame++;
+                }
+            }
+        }
     }
 }
 

@@ -180,6 +180,8 @@ public:
     float GetCaptureProgressFraction() const;
     UFUNCTION(BlueprintCallable, Category = "Capturer")
     float GetCapturedDuration() const;
+    UFUNCTION(BlueprintCallable, Category = "Capturer")
+    int32 GetExportedFrameCount() const;
 
     UFUNCTION(BlueprintCallable, Category = "Capturer")
     TArray<UNVSceneCapturerViewpointComponent*> GetViewpointList();
@@ -311,4 +313,7 @@ protected: // Transient properties
 
 	UPROPERTY(Transient)
 	TArray<UNVSceneCapturerViewpointComponent*> ViewpointList;
+
+    UPROPERTY(Transient)
+    int32 ImageToCapturePerFrame;
 };

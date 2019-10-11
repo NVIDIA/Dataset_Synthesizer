@@ -288,10 +288,10 @@ void UNVSceneDataExporter::ExportCapturerSettings()
 
 void UNVSceneDataExporter::OnStopCapturingSceneData()
 {
-	if (ImageExporterThread.IsValid())
-	{
-		ImageExporterThread->Stop();
-	}
+    if (ImageExporterThread.IsValid())
+    {
+        ImageExporterThread->Stop();
+    }
 }
 
 void UNVSceneDataExporter::OnCapturingCompleted()
@@ -390,6 +390,15 @@ FString UNVSceneDataExporter::GetExportFilePath(UNVSceneFeatureExtractor* Captur
 
     const FString ExportFilePath = FPaths::Combine(OutputFolderPath, OutputFileName);
     return ExportFilePath;
+}
+
+uint32 UNVSceneDataExporter::GetPendingToExportImagesCount() const
+{
+    if (ImageExporterThread.IsValid())
+    {
+        return ImageExporterThread->GetPendingImagesCount();
+    }
+    return 0;
 }
 
 //=================================== UNVSceneDataVisualizer ===================================

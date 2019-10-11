@@ -133,6 +133,8 @@ public:
                               int32 FrameIndex,
                               const FString& FileExtension) const;
 
+    uint32 GetPendingToExportImagesCount() const;
+
 protected:
     void ExportCapturerSettings();
 

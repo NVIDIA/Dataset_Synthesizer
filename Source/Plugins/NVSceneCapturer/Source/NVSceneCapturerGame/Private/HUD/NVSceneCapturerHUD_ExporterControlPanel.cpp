@@ -128,8 +128,7 @@ void UNVSceneCapturerHUD_ExporterControlPanel::Update()
     const FString ExportedFolderPath = SceneDataExporter ? SceneDataExporter->GetConfiguredOutputDirectoryName(): TEXT("");
 
     const uint64 CapturerCounter = ActiveCapturerActor->GetCapturedFrameCounter().GetTotalFrameCount();
-	// TODO: Get the exported frame count from the UNVSceneDataExporter
-	const int32 ExportedFrameCount = 0;
+	const int32 ExportedFrameCount = ActiveCapturerActor->GetExportedFrameCount();
     const int32 NumberOfScenesToExport = ActiveCapturerActor->GetNumberOfFramesToCapture();
     const ENVSceneCapturerState ExporterState = ActiveCapturerActor->GetCurrentState();
     const float CapturedFPS = ActiveCapturerActor->GetCapturedFPS();
