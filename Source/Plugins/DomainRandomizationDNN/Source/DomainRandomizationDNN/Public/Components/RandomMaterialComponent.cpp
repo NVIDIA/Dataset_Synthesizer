@@ -25,14 +25,14 @@ void URandomMaterialComponent::BeginPlay()
     {
         OwnerMeshComponents = DRUtils::GetValidChildMeshComponents(OwnerActor);
 
-        TArray<UActorComponent*> ChildDecalComps = OwnerActor->GetComponentsByClass(UDecalComponent::StaticClass());
+        TArray<UDecalComponent*> ChildDecalComps;
+        OwnerActor->GetComponents<UDecalComponent>(ChildDecalComps);
         OwnerDecalComponents.Reset();
-        for (UActorComponent* CheckComp : ChildDecalComps)
+        for (auto* CheckComp : ChildDecalComps)
         {
-            UDecalComponent* CheckDecalComp = Cast<UDecalComponent>(CheckComp);
-            if (CheckDecalComp)
+            if (CheckComp)
             {
-                OwnerDecalComponents.Add(CheckDecalComp);
+                OwnerDecalComponents.Add(CheckComp);
             }
         }
     }
@@ -105,7 +105,7 @@ void URandomMaterialComponent::OnRandomization_Implementation()
 
     if (bAffectDecalComponents && (OwnerDecalComponents.Num() > 0))
     {
-        for (UDecalComponent* CheckDecalComp : OwnerDecalComponents)
+        for (auto CheckDecalComp : OwnerDecalComponents)
         {
             if (CheckDecalComp)
             {

@@ -17,7 +17,7 @@ void URandomVisibilityComponent::OnRandomization_Implementation()
     AActor* OwnerActor = GetOwner();
     if (OwnerActor)
     {
-        bool bNewHidden = !OwnerActor->bHidden;
+        bool bNewHidden = !OwnerActor->IsHidden();
 
         OwnerActor->SetActorHiddenInGame(bNewHidden);
         OwnerActor->SetActorEnableCollision(!bNewHidden);
