@@ -15,6 +15,7 @@
 #include "CommonRenderResources.h"
 #include "RenderingThread.h"
 #include "RendererInterface.h"
+#include "RenderTargetPool.h"
 #include "StaticBoundShaderState.h"
 #include "Engine/TextureRenderTarget2D.h"
 
@@ -252,7 +253,7 @@ void FNVTextureReader::CopyTexture2d(class IRendererModule* RendererModule, FRHI
             false);
 
         TRefCountPtr<IPooledRenderTarget> ResampleTexturePooledRenderTarget;
-        RendererModule->RenderTargetPoolFindFreeElement(RHICmdList, OutputDesc, ResampleTexturePooledRenderTarget, TEXT("ResampleTexture"));
+        GRenderTargetPool.FindFreeElement(RHICmdList, OutputDesc, ResampleTexturePooledRenderTarget, TEXT("ResampleTexture"));
         check(ResampleTexturePooledRenderTarget);
         // Get a temporary render target from the render thread's pool to draw the source render target on
         const FSceneRenderTargetItem& DestRenderTarget = ResampleTexturePooledRenderTarget->GetRenderTargetItem();
