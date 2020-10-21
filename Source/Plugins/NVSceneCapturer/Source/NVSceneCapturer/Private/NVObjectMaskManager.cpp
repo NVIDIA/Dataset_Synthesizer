@@ -62,10 +62,10 @@ FString UNVObjectMaskMananger::GetActorMaskName(ENVActorMaskNameType MaskNameTyp
             }
             case ENVActorMaskNameType::UseActorMeshName:
             {
-                TArray<UActorComponent*> ActorMeshComps = CheckActor->GetComponentsByClass(UMeshComponent::StaticClass());
-                for (UActorComponent* CheckComp : ActorMeshComps)
+				TArray<UMeshComponent*> ActorMeshComps;
+				CheckActor->GetComponents<UMeshComponent>(ActorMeshComps);
+				for (auto CheckMeshComp : ActorMeshComps)
                 {
-                    UMeshComponent* CheckMeshComp = Cast<UMeshComponent>(CheckComp);
                     if (CheckMeshComp && CheckMeshComp->IsVisible())
                     {
                         // Need to get the mesh which this component use
@@ -82,7 +82,7 @@ FString UNVObjectMaskMananger::GetActorMaskName(ENVActorMaskNameType MaskNameTyp
                         }
                         else
                         {
-                            USkeletalMeshComponent* CheckSkeletalMeshComp = Cast<USkeletalMeshComponent>(CheckComp);
+                            USkeletalMeshComponent* CheckSkeletalMeshComp = Cast<USkeletalMeshComponent>(CheckMeshComp);
                             if (CheckSkeletalMeshComp)
                             {
                                 USkeletalMesh* SkeletalMesh = CheckSkeletalMeshComp->SkeletalMesh;
@@ -122,10 +122,10 @@ void UNVObjectMaskMananger::ApplyStencilMaskToActor(AActor* CheckActor, uint8 Ma
 	else
 	{
 		// Update the actor's meshes to render custom depth or not as this component's data changed
-		TArray<UActorComponent*> ActorMeshComps = CheckActor->GetComponentsByClass(UMeshComponent::StaticClass());
-		for (UActorComponent* CheckComp : ActorMeshComps)
+		TArray<UMeshComponent*> ActorMeshComps;
+		CheckActor->GetComponents< UMeshComponent>(ActorMeshComps);
+		for (auto CheckMeshComp : ActorMeshComps)
 		{
-			UMeshComponent* CheckMeshComp = Cast<UMeshComponent>(CheckComp);
 			if (CheckMeshComp)
 			{
 				CheckMeshComp->SetCustomDepthStencilValue((int32)MaskId);
@@ -165,7 +165,7 @@ FString UNVObjectMaskMananger::GetActorMaskName(const AActor* CheckActor) const
     }
     else
     {
-        if (!CheckActor->bHidden)
+        if (!CheckActor->IsHidden())
         {
             result = GetActorMaskName(ActorMaskNameType, CheckActor);
         }
@@ -176,12 +176,12 @@ FString UNVObjectMaskMananger::GetActorMaskName(const AActor* CheckActor) const
 bool UNVObjectMaskMananger::ShouldCheckActorMask(const AActor* CheckActor) const
 {
     check(CheckActor);
-    if (CheckActor && !CheckActor->bHidden)
+    if (CheckActor && !CheckActor->IsHidden())
     {
-        TArray<UActorComponent*> ActorMeshComps = CheckActor->GetComponentsByClass(UMeshComponent::StaticClass());
-        for (UActorComponent* CheckActorComp : ActorMeshComps)
+		TArray<UMeshComponent*> ActorMeshComps;
+		CheckActor->GetComponents< UMeshComponent>(ActorMeshComps);
+		for (auto CheckMeshComp : ActorMeshComps)
         {
-            UMeshComponent* CheckMeshComp = Cast<UMeshComponent>(CheckActorComp);
             if (CheckMeshComp && CheckMeshComp->IsVisible())
             {
                 // TODO: May need to check if the mesh component are actually hook up with a mesh asset

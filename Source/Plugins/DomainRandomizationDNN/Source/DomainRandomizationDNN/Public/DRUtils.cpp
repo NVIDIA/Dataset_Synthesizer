@@ -708,14 +708,14 @@ namespace DRUtils
             return FoundMeshComp;
         }
 
-        TArray<UActorComponent*> ChildMeshComps = OwnerActor->GetComponentsByClass(UMeshComponent::StaticClass());
-        for (UActorComponent* CheckComp : ChildMeshComps)
+		TArray<UMeshComponent*> ChildMeshComps;
+		OwnerActor->GetComponents<UMeshComponent>(ChildMeshComps);
+		for (auto ChildMeshComp : ChildMeshComps)
         {
-            UMeshComponent* CheckMeshComp = Cast<UMeshComponent>(CheckComp);
-            if (CheckMeshComp)
+            if (ChildMeshComp)
             {
-                USkinnedMeshComponent* SkinnedMeshComp = Cast<USkeletalMeshComponent>(CheckMeshComp);
-                if (SkinnedMeshComp)
+                USkinnedMeshComponent* SkinnedMeshComp = Cast<USkeletalMeshComponent>(ChildMeshComp);
+				if (SkinnedMeshComp)
                 {
                     if (SkinnedMeshComp->SkeletalMesh)
                     {
@@ -725,7 +725,7 @@ namespace DRUtils
                 }
                 else
                 {
-                    UStaticMeshComponent* StaticMeshComp = Cast<UStaticMeshComponent>(CheckMeshComp);
+                    UStaticMeshComponent* StaticMeshComp = Cast<UStaticMeshComponent>(ChildMeshComp);
                     if (StaticMeshComp && StaticMeshComp->GetStaticMesh())
                     {
                         FoundMeshComp = StaticMeshComp;
@@ -748,13 +748,13 @@ namespace DRUtils
             return ValidMeshComps;
         }
 
-        TArray<UActorComponent*> ChildMeshComps = OwnerActor->GetComponentsByClass(UMeshComponent::StaticClass());
-        for (UActorComponent* CheckComp : ChildMeshComps)
+		TArray<UMeshComponent*> ChildMeshComps;
+		OwnerActor->GetComponents<UMeshComponent>(ChildMeshComps);
+		for (auto ChildMeshComp : ChildMeshComps)
         {
-            UMeshComponent* CheckMeshComp = Cast<UMeshComponent>(CheckComp);
-            if (CheckMeshComp)
+            if (ChildMeshComp)
             {
-                USkinnedMeshComponent* SkinnedMeshComp = Cast<USkeletalMeshComponent>(CheckMeshComp);
+                USkinnedMeshComponent* SkinnedMeshComp = Cast<USkeletalMeshComponent>(ChildMeshComp);
                 if (SkinnedMeshComp)
                 {
                     if (SkinnedMeshComp->SkeletalMesh)
@@ -764,7 +764,7 @@ namespace DRUtils
                 }
                 else
                 {
-                    UStaticMeshComponent* StaticMeshComp = Cast<UStaticMeshComponent>(CheckMeshComp);
+                    UStaticMeshComponent* StaticMeshComp = Cast<UStaticMeshComponent>(ChildMeshComp);
                     if (StaticMeshComp && StaticMeshComp->GetStaticMesh())
                     {
                         ValidMeshComps.Add(StaticMeshComp);

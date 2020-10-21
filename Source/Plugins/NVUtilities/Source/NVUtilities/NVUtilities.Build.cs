@@ -18,6 +18,6 @@ public class NVUtilities : ModuleRules
 
         PrivatePCHHeaderFile = "Public/NVUtilitiesModule.h";
 
-        bFasterWithoutUnity = true;
+        bUseUnity = true;
     }
 }

@@ -454,7 +454,7 @@ bool UNVSceneFeatureExtractor_AnnotationData::ShouldExportActor(const AActor* Ch
 
             // The actor is considered as hidden if it's not rendered in the game
             // or it doesn't appear on the viewport
-            if (CheckActor->bHidden || !IsActorInViewFrustum(ViewFrustum, CheckActor))
+            if (CheckActor->IsHidden() || !IsActorInViewFrustum(ViewFrustum, CheckActor))
             {
                 return bShouldExport;
             }
@@ -463,7 +463,7 @@ bool UNVSceneFeatureExtractor_AnnotationData::ShouldExportActor(const AActor* Ch
         //Check if it's flagged
         //TODO (OS): Implement ENVIncludeObjects::MatchesTag
         UNVCapturableActorTag* Tag = Cast<UNVCapturableActorTag>(CheckActor->GetComponentByClass(UNVCapturableActorTag::StaticClass()));
-        bShouldExport |= (!ProtectedDataExportSettings.bIgnoreHiddenActor) && (!CheckActor->bHidden);
+        bShouldExport |= (!ProtectedDataExportSettings.bIgnoreHiddenActor) && (!CheckActor->IsHidden());
         bShouldExport |= ((ProtectedDataExportSettings.IncludeObjectsType == ENVIncludeObjects::AllTaggedObjects) && Tag && (Tag->bIncludeMe /* || IncludeAll*/));
 
         if (bShouldExport)

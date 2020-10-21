@@ -25,6 +25,6 @@ public class NVSceneCapturer : ModuleRules
 
         PrivatePCHHeaderFile = "Public/NVSceneCapturerModule.h";
 
-        bFasterWithoutUnity = true;
+        bUseUnity = true;
     }
 }
