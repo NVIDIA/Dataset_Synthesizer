@@ -401,7 +401,7 @@ uint32 FNVImageExporter_Thread::Run()
             ExportingImageCounterPtr->Increment();
             auto TempExportingImageCounterPtr = ExportingImageCounterPtr;
             auto TempImageWrapperModule = ImageWrapperModule;
-            Async<void>(AsyncExecution, [TempExportingImageCounterPtr, TempImageWrapperModule, CheckImageData = MoveTemp(TmpImageData)]
+            Async(AsyncExecution, [TempExportingImageCounterPtr, TempImageWrapperModule, CheckImageData = MoveTemp(TmpImageData)]
             {
                 FNVImageExporter::ExportImage(TempImageWrapperModule, CheckImageData);
                 if (TempExportingImageCounterPtr.IsValid())

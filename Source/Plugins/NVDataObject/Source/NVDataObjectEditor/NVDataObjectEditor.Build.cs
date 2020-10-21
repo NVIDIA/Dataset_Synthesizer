@@ -17,6 +17,6 @@ public class NVDataObjectEditor : ModuleRules
 
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        bFasterWithoutUnity = true;
+        bUseUnity = true;
     }
 }

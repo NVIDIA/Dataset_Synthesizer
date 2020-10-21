@@ -18,6 +18,6 @@ public class NVDataObject : ModuleRules
 
         PrivatePCHHeaderFile = "Public/NVDataObjectModule.h";
 
-        bFasterWithoutUnity = true;
+        bUseUnity = true;
     }
 }

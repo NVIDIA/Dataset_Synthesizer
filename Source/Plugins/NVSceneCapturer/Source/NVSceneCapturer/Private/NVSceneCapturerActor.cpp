@@ -215,10 +215,10 @@ void ANVSceneCapturerActor::OnActorSelected(UObject* Object)
 {
     if (Object == this)
     {
-        TArray<UActorComponent*> ChildComponents = GetComponentsByClass(UNVSceneCapturerViewpointComponent::StaticClass());
-        for (int i = 0; i < ChildComponents.Num(); i++)
+		TArray<UNVSceneCapturerViewpointComponent*> ChildComponents;
+		GetComponents<UNVSceneCapturerViewpointComponent>(ChildComponents);
+		for (auto CheckViewpointComp : ChildComponents)
         {
-            UNVSceneCapturerViewpointComponent* CheckViewpointComp = Cast<UNVSceneCapturerViewpointComponent>(ChildComponents[i]);
             if (CheckViewpointComp && CheckViewpointComp->IsEnabled())
             {
                 GSelectedComponentAnnotation.Set(CheckViewpointComp);
@@ -658,11 +658,11 @@ void ANVSceneCapturerActor::UpdateViewpointList()
             (CurrentState != ENVSceneCapturerState::Paused))
     {
         // Keep track of all the child viewpoint components
-        TArray<UActorComponent*> ChildComponents = this->GetComponentsByClass(UNVSceneCapturerViewpointComponent::StaticClass());
+		TArray<UNVSceneCapturerViewpointComponent*> ChildComponents;
+		this->GetComponents<UNVSceneCapturerViewpointComponent>(ChildComponents);
         ViewpointList.Reset(ChildComponents.Num());
-        for (int i = 0; i < ChildComponents.Num(); i++)
+        for (auto CheckViewpoint : ChildComponents)
         {
-            UNVSceneCapturerViewpointComponent* CheckViewpoint = Cast<UNVSceneCapturerViewpointComponent>(ChildComponents[i]);
             if (CheckViewpoint)
             {
                 ViewpointList.Add(CheckViewpoint);
